@@ -22,31 +22,32 @@ PATH="$PATH:$PATH_START"
 export PATH="$PATH:$PATH_START"
 
 # Load private zshenv
-zshenv="${PRIVATE}/zshenv"
-if [ -e $zshenv ]; then
-  source $zshenv
-fi
+[[ -f "${PRIVATE}/zshenv" ]] && source "${PRIVATE}/zshenv"
 
 # OH-MY-ZSH stuff
 antigen use oh-my-zsh
-antigen bundle git
-antigen bundle pip
-antigen bundle lein
-antigen bundle command-not-found
-antigen bundle rbenv
-antigen bundle npm
-antigen bundle nvm
-antigen bundle brew
-antigen bundle bundler
-antigen bundle node
-antigen bundle brew-cask
-antigen bundle docker
-antigen bundle golang
-antigen bundle history
-antigen bundle urltools
-
-# Syntax bundles
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundles <<EOBUNDLES
+  git
+  git-extras
+  extract
+  pip
+  lein
+  command-not-found
+  rbenv
+  npm
+  nvm
+  brew
+  bundler
+  node
+  brew-cask
+  docker
+  golang
+  history
+  urltools
+  zsh-users/zsh-syntax-highlighting
+  kennethreitz/autoenv
+  seebi/dircolors-solarized
+EOBUNDLES
 
 # My theme
 antigen theme mattbailey/pure pure
@@ -66,6 +67,10 @@ export SAVEHIST=$HISTSIZE
 # Default Editor
 export EDITOR=vim
 
+# vimpager
+hash vimpager 2> /dev/null \
+  && export PAGER=vimpager
+
 # Docker
 export DOCKER_HOST='tcp://127.0.0.1:2376'
 
@@ -74,14 +79,20 @@ alias chomp="tr -d '\n'"
 alias ccwd="pwd | chomp | pbcopy"
 alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'
 
-# vimpager
-hash vimpager && export PAGER=vimpager
-
 # NVM
-hash brew && \
-  source $(brew --prefix nvm)/nvm.sh && \
-  export NVM_DIR=~/.nvm && \
-  nvm use default
+hash brew 2> /dev/null \
+  && source $(brew --prefix nvm)/nvm.sh \
+  && export NVM_DIR=~/.nvm \
+  && nvm use default
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Dircolors
+hash gdircolors 2> /dev/null \
+  && eval `gdircolors ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized.git/dircolors.256dark`
+hash dircolors 2> /dev/null \
+  && eval `dircolors ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized.git/dircolors.256dark`
+
+# Don't let the last failure generate an exit code
+echo -n ''
