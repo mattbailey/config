@@ -1,0 +1,87 @@
+# Set directory variables
+export SRC="${HOME}/.local/src"
+export PRIVATE="${HOME}/.private"
+
+# Source antigen
+source ${SRC}/antigen/antigen.zsh
+
+# Set locale properly
+export LANG=en_US.UTF-8
+export LC_NUMERIC=$LANG
+export LC_ALL=$LANG
+
+# Fixing PATH
+PATH_START=$PATH
+PATH="$HOME/.config/scripts"
+PATH="$HOME/.local/bin:$PATH"
+PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="/sbin:$PATH"
+PATH="/usr/sbin:$PATH"
+PATH="$PATH:$PATH_START"
+export PATH="$PATH:$PATH_START"
+
+# Load private zshenv
+zshenv="${PRIVATE}/zshenv"
+if [ -e $zshenv ]; then
+  source $zshenv
+fi
+
+# OH-MY-ZSH stuff
+antigen use oh-my-zsh
+antigen bundle git
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+antigen bundle rbenv
+antigen bundle npm
+antigen bundle nvm
+antigen bundle brew
+antigen bundle bundler
+antigen bundle node
+antigen bundle brew-cask
+antigen bundle docker
+antigen bundle golang
+antigen bundle history
+antigen bundle urltools
+
+# Syntax bundles
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# My theme
+antigen theme mattbailey/pure pure
+
+# End configuration.
+antigen apply
+
+# Set tabstops to 2 cols
+tabs -2
+
+# History settings
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+
+# Default Editor
+export EDITOR=vim
+
+# Docker
+export DOCKER_HOST='tcp://127.0.0.1:2376'
+
+# Handy aliases
+alias chomp="tr -d '\n'"
+alias ccwd="pwd | chomp | pbcopy"
+alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'
+
+# vimpager
+hash vimpager && export PAGER=vimpager
+
+# NVM
+hash brew && \
+  source $(brew --prefix nvm)/nvm.sh && \
+  export NVM_DIR=~/.nvm && \
+  nvm use default
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

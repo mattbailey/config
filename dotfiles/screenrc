@@ -1,0 +1,58 @@
+escape ^Vv
+activity "%c activity -> %n%f %t"
+autodetach on
+altscreen on
+bell "%c bell -> %n%f %t^G"
+defflow auto
+defscrollback 10000
+defutf8 on
+msgwait 2                 # 1 second messages
+startup_message off        # disable the startup splash message
+shell -zsh 
+vbell_msg "[[[ ding ]]]"
+vbell off
+nethack on
+
+term screen-256color
+termcapinfo xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+
+hardstatus alwayslastline                                        
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+
+# remove some key bindings
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+# make them safer
+bind 'K' kill
+bind 'W' windowlist
+#
+# # F8 to turn the status bar off
+bindkey -k k8 hardstatus alwayslastline
+# F9 to turn the status bar on 
+bindkey -k k9 hardstatus alwaysignore
+# F1 and F2 to move one screen forward or backward
+bindkey -k k1 prev
+bindkey -k k2 next
+bindkey -k k5 focus
+
+# #
+#screen -t irc /bin/sh -c "irssi;bash"
+#screen -t home
+#screen -t music /bin/sh -c "mocp;bash"  
+#
+
+# Vsplit extras
+#terminfo and termcap for nice 256 color terminal
+#  # allow bold colors - necessary for some reason
+attrcolor b ".I"
+#      # erase background with current bg color
+defbce "on"
+
+

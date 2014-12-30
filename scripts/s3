@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+wget -O ~/tmp/mycreds -q $(cat ~/.ec2/admin_iam_url)
+SECRET_KEY=`jq -r '.SecretAccessKey' <~/tmp/mycreds`
+ACCESS_KEY=`jq -r '.AccessKeyId' <~/tmp/mycreds`
+TOKEN=`jq -r '.Token' <~/tmp/mycreds`
+cat > ~/.s3cfg <<EOM
+[default]
+access_key = $ACCESS_KEY
+secret_key = $SECRET_KEY
+security_token = $TOKEN
+EOM
+#rm ~/tmp/mycreds
+s3cmd $@
