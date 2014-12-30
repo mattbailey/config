@@ -15,7 +15,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'MattesGroeger/vim-bookmarks'
+" NeoBundle 'MattesGroeger/vim-bookmarks'
 
 NeoBundle 'mtth/scratch.vim'
 NeoBundle 'Yggdroot/indentLine'

@@ -32,6 +32,7 @@ brewPkgs=(
   'vim --HEAD --with-cscope --with-luajit --override-system-vi --disable-nls --with-tcl'
   'git --with-blk-sha1 --with-gettext --with-pcre --with-persistent-https'
   'vimpager'
+  'gpg-agent'
   'jq'
   'pass'
   'lastpass-cli'

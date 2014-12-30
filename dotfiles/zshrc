@@ -45,6 +45,7 @@ antigen bundles <<EOBUNDLES
   history
   urltools
   zsh-users/zsh-syntax-highlighting
+  gpg-agent
   kennethreitz/autoenv
   seebi/dircolors-solarized
 EOBUNDLES
@@ -87,6 +88,9 @@ hash brew 2> /dev/null \
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# gpg-agent is shitty
+unset GPG_TTY
 
 # Dircolors
 hash gdircolors 2> /dev/null \
