@@ -80,6 +80,9 @@ done
 gem update
 
 # Install node
+hash brew 2> /dev/null \
+  && source $(brew --prefix nvm)/nvm.sh \
+  && export NVM_DIR=~/.nvm
 [[ "$(nvm current)" != "v${NODE_VERSION}" ]] \
   && nvm install v${NODE_VERSION} \
   && nvm alias default ${NODE_VERSION}
@@ -271,15 +274,6 @@ if [[ "$OS" == "Darwin" ]]; then
   defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
   defaults write org.m0k.transmission WarningDonate -bool false
   defaults write org.m0k.transmission WarningLegal -bool false
-
-  # Reloading stuff
-  find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
-  for app in \
-    "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-    "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-    "Terminal" "Transmission"; do
-    killall "${app}" > /dev/null 2>&1
-  done
 
   echo "Lots of stuff got tweaked and things got reloaded, but you should probably reboot anyway"
 fi
