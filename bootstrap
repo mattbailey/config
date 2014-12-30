@@ -48,6 +48,9 @@ if [[ "$OS" == "Darwin" ]]; then
   brew link vim
 fi
 
+# Add brew zsh to shells
+sudo su -c "echo /usr/local/bin/zsh >> /etc/shells"
+
 # Link up dotfiles
 cd ${DIR}/dotfiles
 for file in *; do
