@@ -49,7 +49,7 @@ if [[ "$OS" == "Darwin" ]]; then
 fi
 
 # Add brew zsh to shells
-sudo su -c "echo /usr/local/bin/zsh >> /etc/shells"
+sudo su root -c "echo /usr/local/bin/zsh >> /etc/shells"
 
 # Link up dotfiles
 cd ${DIR}/dotfiles
