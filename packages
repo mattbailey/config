@@ -19,6 +19,7 @@ caskPkgs=(
   'vlc'
   'handbrake'
   'vagrant'
+  'p4v'
 )
 
 # Homebrew packages
@@ -53,10 +54,10 @@ brewPkgs=(
   'aria2'
   'coreutils'
   'iperf'
-  'perforce'
   'mtr'
   'resty'
   'mongo --with-openssl'
+  'homebrew/binary/perforce'
 )
 
 # dirs in .cache to create
