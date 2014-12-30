@@ -8,7 +8,7 @@ source ${DIR}/packages.sh
 
 # Base settings
 set -e
-set -i
+set -x
 
 # What OS are we in?
 OS=$(uname)
@@ -35,21 +35,28 @@ fi
 
 # Install all pacakges individually
 if [[ "$OS" == "Darwin" ]]; then
-  for pkg in ${brewPkgs[@]}; do
-    brew install ${pkg}
+  # Unlink vim since we install via HEAD
+  #   TODO make a new array for this if there's >1
+  brew unlink vim
+  count=0
+  while [ "x${brewPkgs[count]}" != "x" ]
+  do
+    brew install ${brewPkgs[count]}
+    count=$(( $count + 1 ))
   done
   brew update && brew upgrade
+  brew link vim
 fi
 
 # Link up dotfiles
 cd ${DIR}/dotfiles
 for file in *; do
-  ln -Ffs $file ${HOME}/.${file}
+  ln -Ffs ${DIR}/dotfiles/$file ${HOME}/.${file}
 done
 cd -
 
 # Install fzf
-git -C ${SRC} https://github.com/junegunn/fzf.git \
+git -C ${SRC} clone https://github.com/junegunn/fzf.git \
   || git -C ${SRC}/fzf pull
 [[ -f "${HOME}/fzf.zsh" ]] \
   || ${SRC}/fzf/install
