@@ -37,7 +37,7 @@ fi
 if [[ "$OS" == "Darwin" ]]; then
   # Unlink vim since we install via HEAD
   #   TODO make a new array for this if there's >1
-  brew unlink vim
+  brew unlink vim || echo "vim not installed yet"
   count=0
   while [ "x${brewPkgs[count]}" != "x" ]
   do
