@@ -24,7 +24,7 @@ hash clang || xcode-select --install
 hash brew || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install cask first
-brew install brew-cask
+brew install caskroom/cask/brew-cask
 
 # Install cask packages first, since some things depend on them
 if [[ "$OS" == "Darwin" ]]; then
