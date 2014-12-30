@@ -187,11 +187,6 @@ if [[ "$OS" == "Darwin" ]]; then
   # Allowing text selection in Quick Look/Preview in Finder by default
   defaults write com.apple.finder QLEnableTextSelection -bool true
 
-  # Enabling snap-to-grid for icons on the desktop and in other icon views
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-
   # Speeding up Mission Control animations and grouping windows by APPLICATIONS
   defaults write com.apple.dock expose-animation-duration -float 0.1
   defaults write com.apple.dock "expose-group-by-app" -bool true
