@@ -74,6 +74,7 @@ git -C ${SRC} clone https://github.com/zsh-users/antigen.git \
   && rbenv global ${RUBY_VERSION}
 
 # Install gems
+eval "$(rbenv init -)"
 for pkg in ${gemPkgs[@]}; do
   gem install --conservative --no-document ${pkg}
 done

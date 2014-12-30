@@ -36,6 +36,7 @@ brewPkgs=(
   'pass'
   'lastpass-cli'
   'go'
+  'nvm'
   'imagemagick'
   'gifsicle'
   'ack'
