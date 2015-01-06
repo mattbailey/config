@@ -45,7 +45,6 @@ antigen bundles <<EOBUNDLES
   history
   urltools
   zsh-users/zsh-syntax-highlighting
-  gpg-agent
   kennethreitz/autoenv
   seebi/dircolors-solarized
 EOBUNDLES
@@ -85,6 +84,9 @@ hash brew 2> /dev/null \
   && source $(brew --prefix nvm)/nvm.sh \
   && export NVM_DIR=~/.nvm \
   && nvm use default
+
+# PyEnv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

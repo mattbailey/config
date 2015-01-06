@@ -20,6 +20,8 @@ caskPkgs=(
   'handbrake'
   'vagrant'
   'p4v'
+  'spotify'
+  'karabiner'
 )
 
 # Homebrew packages
