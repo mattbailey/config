@@ -88,6 +88,9 @@ hash brew 2> /dev/null \
 # PyEnv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# Go
+export GOPATH=${HOME}/.golang
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

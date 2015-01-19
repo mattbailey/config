@@ -60,6 +60,8 @@ export CISCO_SPLIT_INC=0
 # List of IPs beyond VPN tunnel
 add_network 172.16.0.0 12
 add_network 10.0.0.0 8
+add_network 199.91.136.0 21
+add_network 198.20.205.100 32
 
 # Execute default script
 . ${HOME}/.config/scripts/openconnect/vpnc-script

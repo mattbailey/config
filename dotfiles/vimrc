@@ -1,6 +1,6 @@
 """""""""""""""""""" NEOBUNDLE
-if filereadable($HOME . "/.config/vim/neobundle.vim")
-  source $HOME/.config/vim/neobundle.vim
+if filereadable($HOME . "/.config/vim/plugins.vim")
+  source $HOME/.config/vim/plugins.vim
 endif
 
 """""""""""""""""""" GLOBAL

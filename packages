@@ -21,6 +21,8 @@ caskPkgs=(
   'vagrant'
   'p4v'
   'spotify'
+  'mjolnir'
+  'dash'
   'karabiner'
 )
 
