@@ -170,5 +170,8 @@ Plug 'fatih/vim-go', {'for' : 'go'}
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim'
+Plug 'ajh17/Spacegray.vim'
+Plug 'ciaranm/inkpot'
+Plug 'morhetz/gruvbox'
 
 call plug#end()

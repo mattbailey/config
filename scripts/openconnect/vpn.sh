@@ -27,5 +27,6 @@ fi
 if [ "$COMMAND" == "D" ]
 then
  killall openconnect
+ kextunload /Library/Extensions/tun.kext
 fi
 

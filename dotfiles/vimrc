@@ -31,7 +31,7 @@ set wildignore=*.swp,*.bak
 set title
 set visualbell
 set noerrorbells
-exec "set listchars=tab:⧽⧽,trail:⸰,nbsp:⸰"
+set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set list
 set ttyfast
 set nocompatible
@@ -46,16 +46,17 @@ set ruler
 set clipboard=unnamed
 
 let g:jellybeans_background_color_256 = 232
-colorscheme jellybeans
+let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italicize_strings=1
+let g:gruvbox_invert_signs=1
+colorscheme gruvbox
 
 
 " Make Columns stand out
 " highlight ColorColumn ctermbg=17
 " call matchadd('ColorColumn', '\%81v', 100)
 " call matchadd('ColorColumn', '\%101v', 100)
-
-" Make comments italic
-highlight Comment cterm=italic
 
 """""""""""""""""""" FILES SPECIFIC
 
@@ -67,7 +68,6 @@ au BufRead,BufNewFile *.xul setfiletype xml
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile *.json set ft=json
 
-autocmd filetype html,xml set listchars-=tab:>.
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>
 
@@ -107,3 +107,33 @@ cmap <C-g> <C-u><ESC>
 command! -bang W w<bang>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
+
+""""""""""""""""""" Tab completion
+function! Inserttabwrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+
+" Map <tab> to Inserttabwarpper()
+inoremap <tab> <c-r>=Inserttabwrapper()<cr>
+
+" Shift tab to backwards search
+inoremap <s-tab> <c-n>
+
+""""""""""""""""""" Strip bad whitespace
+function! <SID>StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nmap <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
