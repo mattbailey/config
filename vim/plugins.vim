@@ -14,8 +14,14 @@ call plug#begin('~/.vim/plugged')
 " Sensible
 Plug 'tpope/vim-sensible'
 
+" Syntastic
+Plug 'scrooloose/syntastic'
+
 " Scratch
 Plug 'mtth/scratch.vim'
+
+" vimwiki
+Plug 'vimwiki/vimwiki'
 
 " Indentation stuff
 Plug 'Yggdroot/indentLine'
@@ -31,6 +37,17 @@ Plug 'vim-scripts/genutils'
 
 " Neomake
 Plug 'benekastah/neomake'
+let g:neomake_go_go_maker = {
+      \ 'args': [ 'build' ],
+      \ 'errorformat':
+        \ '%W%f:%l: warning: %m,' .
+        \ '%E%f:%l:%c:%m,' .
+        \ '%E%f:%l:%m,' .
+        \ '%C%\s%\+%m,' .
+        \ '%-G#%.%#'
+    \ }
+let g:neomake_go_enabled_makers = ['golint', 'go']
+autocmd! BufWritePost *.py,*.js,*.rb,*.go Neomake
 
 " Coloring
 Plug 'junegunn/goyo.vim'
@@ -65,6 +82,7 @@ let g:colorizer_auto_color = 0
 
 Plug 'scrooloose/nerdtree'
 nmap \e :NERDTreeToggle<CR>
+Plug 'tpope/vim-vinegar'
 
 Plug 'rizzatti/dash.vim' " Adds :Dash documentation explorer
 Plug 'rizzatti/greper.vim' " Adds :G using ag/ack/grep
@@ -86,8 +104,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#csv#enabled = 1
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
@@ -138,10 +156,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify' " Like gitgutter, but extended and supports other SCM
 let g:signify_update_on_focusgained = 1
 let g:signify_line_hilight = 1
+let g:signify_vcs_list = [ 'git', 'hg' ]
 
 " One-off syntax additions
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
+Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
 " Checking out neocomplete, don't use two syntax completion suites
 " Plug 'Valloric/YouCompleteMe', {
 "       \ 'build' : {
@@ -156,17 +176,32 @@ Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 "   source $HOME/.config/vim/neocomplete_config.vim
 " endif
 
+Plug 'vim-scripts/diffchar.vim'
+Plug 'rking/ag.vim'
+
+" Commentary
+Plug 'tpope/vim-commentary'
+
+" Tab completion
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "context"
+
+" CSV parsing
 Plug 'chrisbra/csv.vim'
 
 " Ruby stuff
 Plug 'tpope/vim-rake', {'for' : 'ruby'}
 Plug 'tpope/vim-cucumber', {'for' : 'ruby'}
 Plug 'tpope/vim-bundler', {'for' : 'ruby'}
-Plug 'tpope/vim-endwise', {'for' : 'ruby'}
+Plug 'tpope/vim-endwise'
 Plug 'vim-ruby/vim-ruby', {'for' : 'ruby'}
 
 " Golang stuff
 Plug 'fatih/vim-go', {'for' : 'go'}
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 
 " Colorschemes
 Plug 'nanotech/jellybeans.vim'

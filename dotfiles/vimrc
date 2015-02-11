@@ -65,8 +65,8 @@ au BufRead mutt-*        set invhls
 au bufNewFile *.html 0r ~/.vim/templates/html.txt
 au BufRead,BufNewFile *.jsm setfiletype javascript
 au BufRead,BufNewFile *.xul setfiletype xml
-au BufRead,BufNewFile *.md set ft=markdown
-au BufRead,BufNewFile *.json set ft=json
+au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.json set filetype=json
 
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>

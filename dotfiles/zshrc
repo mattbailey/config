@@ -14,6 +14,8 @@ export LC_ALL=$LANG
 PATH_START=$PATH
 PATH="$HOME/.config/scripts"
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="/usr/local/opt/go/libexec/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/sbin:$PATH"
@@ -33,8 +35,8 @@ antigen bundles <<EOBUNDLES
   pip
   lein
   command-not-found
-  rbenv
   npm
+  rbenv
   nvm
   brew
   bundler
@@ -82,14 +84,13 @@ alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'
 # NVM
 hash brew 2> /dev/null \
   && source $(brew --prefix nvm)/nvm.sh \
-  && export NVM_DIR=~/.nvm \
-  && nvm use default
+  && export NVM_DIR=~/.nvm
 
 # PyEnv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # Go
-export GOPATH=${HOME}/.golang
+export GOPATH=${HOME}/go
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
