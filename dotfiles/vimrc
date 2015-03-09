@@ -33,7 +33,6 @@ set visualbell
 set noerrorbells
 set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set list
-set ttyfast
 set nocompatible
 set backup
 set backupdir=~/.cache/vim
@@ -50,7 +49,8 @@ let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ec
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_invert_signs=1
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme wells-colors
 
 
 " Make Columns stand out

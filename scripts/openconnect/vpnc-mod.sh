@@ -65,6 +65,7 @@ add_network 198.20.205.100 32
 add_network 12.145.63.0 24
 add_network 199.107.64.160 28
 add_network 192.168.100.0 24
+add_network 216.146.32.0 20
 
 # Execute default script
 . ${HOME}/.config/scripts/openconnect/vpnc-script

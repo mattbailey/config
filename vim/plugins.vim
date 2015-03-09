@@ -114,14 +114,30 @@ let g:airline#extensions#whitespace#enabled = 1
 Plug 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
 let g:sneak#streak = 1
 
+Plug 'JazzCore/ctrlp-cmatcher', {
+  \ 'build' : {
+  \   'unix' : './install.sh',
+  \   'mac'  : 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh',
+  \ },
+\}
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<C-D>'
 nmap ; :CtrlPBuffer<CR>
 nnoremap <leader>. :CtrlPTag<cr>
 " nmap ; :CtrlPMixed<CR>
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ --ignore "**/*.swp"
+      \ --ignore "**/*.o"
+      \ --ignore "**/*.so"
+      \ -g ""'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_dotfiles = 1
 let g:ctrlp_switch_buffer = 0
@@ -204,6 +220,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 
 " Colorschemes
+Plug 'wellsjo/wells-colorscheme.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'ciaranm/inkpot'
