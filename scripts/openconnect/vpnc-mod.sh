@@ -67,6 +67,9 @@ add_network 199.107.64.160 28
 add_network 192.168.100.0 24
 add_network 216.146.32.0 20
 
+# AWS Networks
+. /tmp/awsnetworks.txt
+
 # Execute default script
 . ${HOME}/.config/scripts/openconnect/vpnc-script
 

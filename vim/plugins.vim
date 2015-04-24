@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 " Syntastic
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 " Scratch
 Plug 'mtth/scratch.vim'
@@ -23,13 +23,17 @@ Plug 'mtth/scratch.vim'
 " vimwiki
 Plug 'vimwiki/vimwiki'
 
+" Autocomplete brackets
+Plug 'Raimondi/delimitMate'
+
 " Indentation stuff
 Plug 'Yggdroot/indentLine'
 "let g:indentLine_enabled = 0
-let g:indentLine_fileType = ['vim','ruby','yaml','json','javascript','bash','sh','html','css','scss']
+let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss']
 let g:indentLine_char = '│'
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 239
+"unlet! g:indentLine_color_term g:indentLine_color_gui
 
 " VimL extensions (OO)
 Plug 'rizzatti/funcoo.vim'
@@ -47,7 +51,14 @@ let g:neomake_go_go_maker = {
         \ '%-G#%.%#'
     \ }
 let g:neomake_go_enabled_makers = ['golint', 'go']
-autocmd! BufWritePost *.py,*.js,*.rb,*.go Neomake
+autocmd! BufWritePost *.html,*.py,*.js,*.rb,*.go,*.json Neomake
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose', '--extract', 'auto'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_airline = 1
+"autocmd FileType html set ft=javascript
 
 " Coloring
 Plug 'junegunn/goyo.vim'
@@ -67,13 +78,21 @@ Plug 'mtth/locate.vim'
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
 " JavaScript stuff
-Plug 'jelera/vim-javascript-syntax', {'for' : 'javascript'}
-Plug 'othree/javascript-libraries-syntax.vim', {'for' : 'javascript'}
+Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
+Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
 Plug 'mohitleo9/vim-fidget', {
   \ 'build' : {
   \   'unix' : 'sudo npm install',
   \   'mac'  : 'npm install',
   \ },
+\}
+Plug 'marijnh/tern_for_vim', {
+  \ 'for': ['javascript', 'html'],
+  \ 'build' : {
+  \   'unix' : 'sudo npm install',
+  \   'mac' : 'npm install'
+  \ }
 \}
 
 " Utilitarian stuff
@@ -99,17 +118,21 @@ nmap <silent> \m <Plug>GoldenViewSwitchMain
 nmap <silent> \M <Plug>GoldenViewSwitchToggle
 
 Plug 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
+let g:smartusline_string_to_highlight = '(%n) %f '
+set laststatus=2 " Seperate lines for state and mode
+let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#syntastic#enabled=0
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
-let g:airline_detect_modified = 1
-let g:airline_detect_paste = 1
-let g:airline#extensions#syntastic#enabled = 1
+"let g:airline_detect_modified = 1
+"let g:airline_detect_paste = 1
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#whitespace#enabled = 1
+"let g:airline#extensions#hunks#enabled = 1
+"let g:airline#extensions#hunks#non_zero_only = 1
+"let g:airline#extensions#whitespace#enabled = 1
 
 Plug 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
 let g:sneak#streak = 1
@@ -225,5 +248,10 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'ciaranm/inkpot'
 Plug 'morhetz/gruvbox'
+
+" Semantic hilighting
+Plug 'jaxbot/semantic-highlight.vim'
+let g:semanticTermColors = [14,15,13,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201]
+:nnoremap <Leader>s :SemanticHighlightToggle<cr>
 
 call plug#end()

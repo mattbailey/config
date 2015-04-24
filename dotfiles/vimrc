@@ -49,8 +49,9 @@ let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ec
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_invert_signs=1
-" colorscheme gruvbox
-colorscheme wells-colors
+colorscheme gruvbox
+"colorscheme wells-colors
+hi Conceal ctermfg=200
 
 
 " Make Columns stand out
@@ -60,12 +61,10 @@ colorscheme wells-colors
 
 """""""""""""""""""" FILES SPECIFIC
 
-au BufRead mutt-*        set ft=mail
-au BufRead mutt-*        set invhls
-au bufNewFile *.html 0r ~/.vim/templates/html.txt
 au BufRead,BufNewFile *.jsm setfiletype javascript
 au BufRead,BufNewFile *.xul setfiletype xml
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.html set filetype=javascript
 au BufRead,BufNewFile *.json set filetype=json
 
 nnoremap <leader>j :%!jq .<CR>
@@ -137,3 +136,6 @@ function! <SID>StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 nmap <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+
+" RAML
+autocmd! BufNewFile,BufRead *.raml set filetype=yaml
