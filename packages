@@ -4,26 +4,14 @@ NODE_VERSION=0.11.14
 
 # cask packages
 caskPkgs=(
-  'clamxav'
-  'dropbox'
   'firefox'
   'flash'
   'google-chrome'
-  'mailbox'
   'steam'
   'transmission'
-  'xquartz'
-  'iterm2'
-  'hipchat'
-  'java'
-  'vlc'
-  'handbrake'
   'vagrant'
   'p4v'
   'spotify'
-  'mjolnir'
-  'dash'
-  'karabiner'
 )
 
 # Homebrew packages
@@ -33,7 +21,6 @@ brewPkgs=(
   'zsh-syntax-highlighting'
   'gh'
   'curl --with-c-ares --with-gssapi --with-libidn --with-libmetalink --with-libssh2 --with-rtmpdump --with-libmetalink'
-  'vim --HEAD --with-cscope --with-luajit --override-system-vi --disable-nls --with-tcl'
   'git --with-blk-sha1 --with-gettext --with-pcre --with-persistent-https'
   'vimpager'
   'gpg-agent'
@@ -48,7 +35,6 @@ brewPkgs=(
   'the_silver_searcher'
   'watch'
   'tmux'
-  'brew-cask'
   'redis'
   'elasticsearch'
   'etcdctl'
@@ -62,7 +48,6 @@ brewPkgs=(
   'iperf'
   'mtr'
   'resty'
-  'mongo --with-openssl'
   'homebrew/binary/perforce'
 )
 

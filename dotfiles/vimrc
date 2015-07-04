@@ -65,6 +65,7 @@ au BufRead,BufNewFile *.jsm setfiletype javascript
 au BufRead,BufNewFile *.xul setfiletype xml
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.html set filetype=javascript
+au BufRead,BufNewFile *.tag set filetype=javascript
 au BufRead,BufNewFile *.json set filetype=json
 
 nnoremap <leader>j :%!jq .<CR>
@@ -139,3 +140,5 @@ nmap <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 
 " RAML
 autocmd! BufNewFile,BufRead *.raml set filetype=yaml
+
+com! FormatJSON %!jq .
