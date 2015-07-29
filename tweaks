@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+  
+  sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+
+  # Expanding the save panel by default
+  defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+  defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+  defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+  # Automatically quit printer app once the print jobs complete
+  defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+  # Displaying ASCII control characters using caret notation in standard text views
+  defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+
+  # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
+  sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+  # Check for software updates daily, not just once per week
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+  # Disable smart quotes and smart dashes
+  defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+  # Add ability to toggle between Light and Dark mode in Yosemite using ctrl+opt+cmd+t
+  sudo defaults write /Library/Preferences/.GlobalPreferences.plist _HIEnableThemeSwitchHotKey -bool true
+
+  # Disable hibernation (speeds up entering sleep mode)
+  sudo pmset -a hibernatemode 0
+
+  # Disable the sudden motion sensor (it's not useful for SSDs/current MacBooks)
+  sudo pmset -a sms 0
+
+  # Disable system-wide resume (keep windows bullshit)
+  defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+  # Increasing sound quality for Bluetooth headphones/headsets
+  defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+  # Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)
+  defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+  # Setting a blazingly fast keyboard repeat rate (this drastically improves performance in vim)
+  defaults write NSGlobalDomain KeyRepeat -int 0
+
+  # Turn off keyboard illumination when computer is not used for 5 minutes
+  defaults write com.apple.BezelServices kDimTime -int 300
+
+  # Setting screenshot format to PNG
+  defaults write com.apple.screencapture type -string "png"
+
+  # Enabling subpixel font rendering on non-Apple LCDs
+  defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+  # Enabling HiDPI display modes (requires restart)
+  sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+  # Show all filename extensions in Finder by defaults
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+  # Show status bar in Finder by defaults
+  defaults write com.apple.finder ShowStatusBar -bool true
+
+  # Disable the warning when changing a file extension
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+  # Use column view in all Finder windows by default
+  defaults write com.apple.finder FXPreferredViewStyle Clmv
+
+  # Avoid creation of .DS_Store files on network volumes
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+  # Disable disk image verification
+  defaults write com.apple.frameworks.diskimages skip-verify -bool true
+  defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+  defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+  # Allowing text selection in Quick Look/Preview in Finder by default
+  defaults write com.apple.finder QLEnableTextSelection -bool true
+
+  # Speeding up Mission Control animations and grouping windows by APPLICATIONS
+  defaults write com.apple.dock expose-animation-duration -float 0.1
+  defaults write com.apple.dock "expose-group-by-app" -bool true
+
+  # Set Dock to auto-hide and remove  the auto-hiding delay
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock autohide-delay -float 0
+  defaults write com.apple.dock autohide-time-modifier -float 0
+
+  # Don’t send search queries to Apple
+  defaults write com.apple.Safari UniversalSearchEnabled -bool false
+  defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+  # Removing useless icons from Safari's bookmarks bookmarks
+  defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+  # Enabling the Develop menu and the Web Inspector in Safari
+  defaults write com.apple.Safari IncludeDevelopMenu -bool true
+  defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+  defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+
+  # Adding a context menu item for showing the Web Inspector in web views
+  defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+  # Disabling the annoying backswipe in Chrome
+  defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+  defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+  # Using the system-native print preview dialog in Chrome
+  defaults write com.google.Chrome DisablePrintPreview -bool true
+  defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+  # Prevent Time Machine from prompting to use new hard drives as backup volumes
+  defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+  # Disable smart quotes in Messages.app
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+  # Transmission useful tweaks
+  defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+  defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Incomplete"
+  defaults write org.m0k.transmission DownloadAsk -bool false
+  defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+  defaults write org.m0k.transmission WarningDonate -bool false
+  defaults write org.m0k.transmission WarningLegal -bool false

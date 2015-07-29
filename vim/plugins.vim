@@ -17,6 +17,17 @@ Plug 'tpope/vim-sensible'
 " Syntastic
 " Plug 'scrooloose/syntastic'
 
+Plug 'junegunn/rainbow_parentheses.vim'
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
+" List of colors that you do not want. ANSI code or #RRGGBB
+let g:rainbow#blacklist = [233, 234]
+
+"au VimEnter * RainbowParentheses
+
+Plug 'haya14busa/incsearch.vim'
+
 " Scratch
 Plug 'mtth/scratch.vim'
 

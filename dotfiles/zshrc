@@ -69,10 +69,6 @@ export SAVEHIST=$HISTSIZE
 # Default Editor
 export EDITOR=vim
 
-# vimpager
-hash vimpager 2> /dev/null \
-  && export PAGER=vimpager
-
 # Docker
 export DOCKER_HOST='tcp://127.0.0.1:2376'
 
