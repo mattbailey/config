@@ -14,6 +14,7 @@ export LC_ALL=$LANG
 PATH_START=$PATH
 PATH="$HOME/.config/scripts"
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.linuxbrew/bin"
 PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/opt/go/libexec/bin:$PATH"
 PATH="/usr/local/bin:$PATH"
@@ -73,6 +74,7 @@ export EDITOR=vim
 export DOCKER_HOST='tcp://127.0.0.1:2376'
 
 # Handy aliases
+alias clip="nc localhost 8377"
 alias chomp="tr -d '\n'"
 alias ccwd="pwd | chomp | pbcopy"
 alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'

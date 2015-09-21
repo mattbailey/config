@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Where am I?
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# Base settings
+set -e
+set -x
+
+# What OS are we in?
+OS=$(uname)
+
+# Create src directory to keep 3rd party utilities
+SRC=${HOME}/.local/src
+[[ -d "${SRC}" ]] || mkdir -p ${SRC}
+
+# Link up dotfiles
+cd ${DIR}/dotfiles
+for file in *; do
+  ln -Ffs ${DIR}/dotfiles/$file ${HOME}/.${file}
+done
+cd -
+
+# Install fzf
+git -C ${SRC} clone https://github.com/junegunn/fzf.git \
+  || git -C ${SRC}/fzf pull
+[[ -f "${HOME}/fzf.zsh" ]] \
+  || ${SRC}/fzf/install
+
+# Install termcap files
+for terminfo in ${DIR}/scripts/*.terminfo; do
+  tic $terminfo
+done
+
+# Fill out cache dirs
+for dir in ${cacheDirs[@]}; do
+  [[ -d "${HOME}/.cache/${dir}" ]] || mkdir -p ${HOME}/.cache/${dir}
+done
+
+# Install antigen
+git -C ${SRC} clone https://github.com/zsh-users/antigen.git \
+  || git -C ${SRC}/antigen pull
