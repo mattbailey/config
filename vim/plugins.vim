@@ -3,10 +3,11 @@ if !1 | finish | endif
 
 if has('vim_starting')
   set nocompatible
-  " Load vim-plug
-  if empty(glob("~/.vim/autoload/plug.vim"))
-    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-  endif
+	if empty(glob('~/.config/vim/autoload/plug.vim'))
+	  silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+	    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	  autocmd VimEnter * PlugInstall
+	endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -17,6 +18,7 @@ Plug 'tpope/vim-sensible'
 " FZF
 " Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
 set rtp+=/usr/local/Cellar/fzf/HEAD
+set rtp+=~/.local/src/fzf
 
 " Syntastic
 " Plug 'scrooloose/syntastic'
