@@ -5,6 +5,9 @@ endif
 
 """""""""""""""""""" GLOBAL
 filetype plugin indent on
+set nostartofline
+set scrolloff=8
+set ttyfast
 set background=dark
 set relativenumber
 set number
