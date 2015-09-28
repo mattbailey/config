@@ -20,6 +20,9 @@ Plug 'tpope/vim-sensible'
 set rtp+=/usr/local/Cellar/fzf/HEAD
 set rtp+=~/.local/src/fzf
 
+Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'vim-utils/vim-interruptless'
+
 " Syntastic
 " Plug 'scrooloose/syntastic'
 
