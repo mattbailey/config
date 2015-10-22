@@ -2,6 +2,9 @@
 export SRC="${HOME}/.local/src"
 export PRIVATE="${HOME}/.private"
 
+# make less better
+export LESS="-F -X -R"
+
 # Source antigen
 source ${SRC}/antigen/antigen.zsh
 

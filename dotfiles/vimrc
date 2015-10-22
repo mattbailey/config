@@ -46,6 +46,7 @@ set expandtab
 set softtabstop=2 tabstop=2 shiftwidth=2
 set ruler
 set clipboard=unnamed
+set lazyredraw
 
 let g:jellybeans_background_color_256 = 232
 let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}

@@ -131,6 +131,9 @@ Plug 'mtth/locate.vim'
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
 " JavaScript stuff
+Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'html']}
+Plug 'einars/js-beautify', {'for': ['javascript', 'html']}
+Plug 'guileen/vim-node-dict'
 Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
