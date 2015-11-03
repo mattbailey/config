@@ -304,6 +304,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'ciaranm/inkpot'
 Plug 'morhetz/gruvbox'
+Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
 
 " Semantic hilighting
 Plug 'jaxbot/semantic-highlight.vim'

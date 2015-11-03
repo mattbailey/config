@@ -1,4 +1,6 @@
 """""""""""""""""""" NEOBUNDLE
+source $HOME/.config/vim/autoload/plug.vim
+
 if filereadable($HOME . "/.config/vim/plugins.vim")
   source $HOME/.config/vim/plugins.vim
 endif
@@ -47,15 +49,19 @@ set softtabstop=2 tabstop=2 shiftwidth=2
 set ruler
 set clipboard=unnamed
 set lazyredraw
+set cursorline
 
-let g:jellybeans_background_color_256 = 232
-let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
+"let g:jellybeans_background_color_256 = 232
+"let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_invert_signs=1
-colorscheme gruvbox
 "colorscheme wells-colors
 hi Conceal ctermfg=200
+color dracula
+set background=dark
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
 
 
 " Make Columns stand out
