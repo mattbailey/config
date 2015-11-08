@@ -40,7 +40,7 @@ set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set list
 set nocompatible
 set backup
-set backupdir=~/.cache/vim
+set backupdir=$HOME/.cache/vim
 set noswapfile
 set fileformats=unix,dos,mac
 set laststatus=2
@@ -68,6 +68,9 @@ highlight nonText ctermbg=NONE
 " highlight ColorColumn ctermbg=17
 " call matchadd('ColorColumn', '\%81v', 100)
 " call matchadd('ColorColumn', '\%101v', 100)
+
+set fillchars=vert:┃,fold:━
+highlight VertSplit cterm=none ctermbg=none ctermfg=247
 
 """""""""""""""""""" FILES SPECIFIC
 

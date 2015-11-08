@@ -105,11 +105,11 @@ let g:neomake_go_go_maker = {
     \ }
 let g:neomake_go_enabled_makers = ['golint', 'go']
 autocmd! BufWritePost *.html,*.py,*.js,*.rb,*.go,*.json Neomake
-let g:neomake_javascript_jshint_maker = {
-    \ 'args': ['--verbose', '--extract', 'auto'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_javascript_enabled_makers = ['jshint']
+" let g:neomake_javascript_jshint_maker = {
+"    \ 'args': ['--verbose', '--extract', 'auto'],
+"    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+"    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_airline = 1
 "autocmd FileType html set ft=javascript
 
@@ -235,7 +235,7 @@ let g:bling_count = 5
 Plug 'mbbill/undotree' " Adds complete undotree
 nnoremap \u :UndotreeToggle<CR>
 if has("persistent_undo")
-  set undodir='~/.cache/vimundo/'
+  set undodir=$HOME/.cache/vimundo/
   set undofile
 endif
 
