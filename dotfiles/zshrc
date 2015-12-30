@@ -15,7 +15,8 @@ export LC_ALL=$LANG
 
 # Fixing PATH
 PATH_START=$PATH
-PATH="$HOME/.config/scripts"
+PATH="./node_modules/.bin"
+PATH="$HOME/.config/scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.linuxbrew/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
@@ -95,6 +96,7 @@ export GOPATH=${HOME}/go
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS="-e -m"
 
 # gpg-agent is shitty
 unset GPG_TTY
@@ -141,4 +143,10 @@ destroy_mongo_replica() {
 
   echo Listing $3 /var/mongo
   ssh -A core@$3 'sudo rm -rf /var/mongo'
+}
+
+function install_jsctags {
+  npm install jsctags
+  # https://github.com/mozilla/doctorjs/issues/52
+  gsed -i '51i tags: [],' ./node_modules/jsctags/jsctags/ctags/index.js
 }

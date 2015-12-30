@@ -3,11 +3,11 @@ if !1 | finish | endif
 
 if has('vim_starting')
   set nocompatible
-	if empty(glob('~/.config/vim/autoload/plug.vim'))
-	  silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
-	    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	  autocmd VimEnter * PlugInstall
-	endif
+  if empty(glob('~/.config/vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+  endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -104,14 +104,23 @@ let g:neomake_go_go_maker = {
         \ '%-G#%.%#'
     \ }
 let g:neomake_go_enabled_makers = ['golint', 'go']
-autocmd! BufWritePost *.html,*.py,*.js,*.rb,*.go,*.json Neomake
+"autocmd! BufWritePre *.tag,*.html,*.py,*.js,*.rb,*.go,*.json WatchForChanges
+autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
 " let g:neomake_javascript_jshint_maker = {
 "    \ 'args': ['--verbose', '--extract', 'auto'],
 "    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
 "    \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_javascript_eslint_maker = {'args': ['--fix']}
 let g:neomake_airline = 1
-"autocmd FileType html set ft=javascript
+autocmd FileType html set ft=javascript
+autocmd FileType tag set ft=javascript
+" neomake
+nmap <Leader><Space>o :lopen<CR>      " open location window
+nmap <Leader><Space>c :lclose<CR>     " close location window
+nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+nmap <Leader><Space>n :lnext<CR>      " next error/warning
+nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
 " Coloring
 Plug 'junegunn/goyo.vim'
@@ -131,9 +140,11 @@ Plug 'mtth/locate.vim'
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
 " JavaScript stuff
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'html']}
 Plug 'einars/js-beautify', {'for': ['javascript', 'html']}
-Plug 'guileen/vim-node-dict'
+Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
+Plug 'moll/vim-node', {'for': ['javascript', 'html']}
 Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
@@ -143,17 +154,15 @@ Plug 'mohitleo9/vim-fidget', {
   \   'mac'  : 'npm install',
   \ },
 \}
-Plug 'marijnh/tern_for_vim', {
-  \ 'for': ['javascript', 'html'],
-  \ 'build' : {
-  \   'unix' : 'sudo npm install',
-  \   'mac' : 'npm install'
-  \ }
-\}
 
 " Utilitarian stuff
 Plug 'chrisbra/Colorizer'
 let g:colorizer_auto_color = 0
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 Plug 'scrooloose/nerdtree'
 nmap \e :NERDTreeToggle<CR>

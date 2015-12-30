@@ -1,3 +1,6 @@
+let mapleader=","
+
+source $HOME/.config/vim/watch-for-changes.vim
 """""""""""""""""""" NEOBUNDLE
 source $HOME/.config/vim/autoload/plug.vim
 
@@ -7,6 +10,7 @@ endif
 
 """""""""""""""""""" GLOBAL
 filetype plugin indent on
+set autoread
 set nostartofline
 set scrolloff=8
 set ttyfast
@@ -14,7 +18,6 @@ set background=dark
 set relativenumber
 set number
 set mouse=a
-let mapleader=","
 set t_Co=256
 syntax on
 set encoding=utf-8
@@ -48,8 +51,13 @@ set expandtab
 set softtabstop=2 tabstop=2 shiftwidth=2
 set ruler
 set clipboard=unnamed
-set lazyredraw
-set cursorline
+
+"let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
+"set noshowmatch         " Don't match parentheses/brackets
+set nocursorline        " Don't paint cursor line
+set nocursorcolumn      " Don't paint cursor column
+set lazyredraw          " Wait to redraw
+let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
 "let g:jellybeans_background_color_256 = 232
 "let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
@@ -80,6 +88,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.html set filetype=javascript
 au BufRead,BufNewFile *.tag set filetype=javascript
 au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.adoc set filetype=asciidoc
 
 nnoremap <leader>j :%!jq .<CR>
 nnoremap <leader>b :%!xxd<CR>
