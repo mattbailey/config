@@ -17,8 +17,11 @@ Plug 'tpope/vim-sensible'
 
 " FZF
 " Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
-set rtp+=/usr/local/Cellar/fzf/HEAD
-set rtp+=~/.local/src/fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"set rtp+=/usr/local/Cellar/fzf/HEAD
+"set rtp+=~/.local/src/fzf
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-utils/vim-interruptless'
@@ -143,6 +146,12 @@ Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
 Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'html']}
 Plug 'einars/js-beautify', {'for': ['javascript', 'html']}
+autocmd FileType javascript vnoremap <buffer> F :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+nnoremap <c-f> V<c-f>
 Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
 Plug 'moll/vim-node', {'for': ['javascript', 'html']}
 Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
@@ -169,7 +178,7 @@ nmap \e :NERDTreeToggle<CR>
 Plug 'tpope/vim-vinegar'
 
 Plug 'rizzatti/dash.vim' " Adds :Dash documentation explorer
-Plug 'rizzatti/greper.vim' " Adds :G using ag/ack/grep
+"Plug 'rizzatti/greper.vim' " Adds :G using ag/ack/grep
 Plug 'bruno-/vim-vertical-move'
 Plug 'benmills/vimux'
 " Plug 'mattboehm/vim-unstack'
