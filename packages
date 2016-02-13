@@ -39,7 +39,6 @@ brewPkgs=(
   'elasticsearch'
   'etcdctl'
   'fleetctl'
-  'boot2docker'
   'rbenv'
   'rbenv-gem-rehash'
   'ruby-build'

@@ -26,38 +26,39 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-utils/vim-interruptless'
 
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_async = 1
+let g:easytags_languages = {
+\   'javascript': {
+\     'cmd': '/usr/local/bin/jsctags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   }
+\}
+
 " Syntastic
 " Plug 'scrooloose/syntastic'
 
-Plug 'unblevable/quick-scope'
-" quick-scrope hack from: https://gist.github.com/cszentkiralyi/dc61ee28ab81d23a67aa
-function! Quick_scope_selective(movement)
-    let needs_disabling = 0
-    if !g:qs_enable
-        QuickScopeToggle
-        redraw
-        let needs_disabling = 1
-    endif
+Plug 'easymotion/vim-easymotion'
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-    let letter = nr2char(getchar())
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
 
-    if needs_disabling
-        QuickScopeToggle
-    endif
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
-    return a:movement . letter
-endfunction
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-let g:qs_enable = 0
-
-nnoremap <expr> <silent> f Quick_scope_selective('f')
-nnoremap <expr> <silent> F Quick_scope_selective('F')
-nnoremap <expr> <silent> t Quick_scope_selective('t')
-nnoremap <expr> <silent> T Quick_scope_selective('T')
-vnoremap <expr> <silent> f Quick_scope_selective('f')
-vnoremap <expr> <silent> F Quick_scope_selective('F')
-vnoremap <expr> <silent> t Quick_scope_selective('t')
-vnoremap <expr> <silent> T Quick_scope_selective('T')
 
 Plug 'junegunn/rainbow_parentheses.vim'
 let g:rainbow#max_level = 16
@@ -69,6 +70,18 @@ let g:rainbow#blacklist = [233, 234]
 "au VimEnter * RainbowParentheses
 
 Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Scratch
 Plug 'mtth/scratch.vim'
@@ -89,7 +102,7 @@ let g:indentLine_color_term = 239
 "unlet! g:indentLine_color_term g:indentLine_color_gui
 
 Plug 'tpope/vim-surround'
-Plug 'einars/js-beautify'
+Plug 'einars/js-beautify', {'for': ['javascript', 'html']}
 
 " VimL extensions (OO)
 Plug 'rizzatti/funcoo.vim'
@@ -98,14 +111,14 @@ Plug 'vim-scripts/genutils'
 " Neomake
 Plug 'benekastah/neomake'
 let g:neomake_go_go_maker = {
-      \ 'args': [ 'build' ],
-      \ 'errorformat':
-        \ '%W%f:%l: warning: %m,' .
-        \ '%E%f:%l:%c:%m,' .
-        \ '%E%f:%l:%m,' .
-        \ '%C%\s%\+%m,' .
-        \ '%-G#%.%#'
-    \ }
+    \ 'args': [ 'build' ],
+    \ 'errorformat':
+      \ '%W%f:%l: warning: %m,' .
+      \ '%E%f:%l:%c:%m,' .
+      \ '%E%f:%l:%m,' .
+      \ '%C%\s%\+%m,' .
+      \ '%-G#%.%#'
+  \ }
 let g:neomake_go_enabled_makers = ['golint', 'go']
 "autocmd! BufWritePre *.tag,*.html,*.py,*.js,*.rb,*.go,*.json WatchForChanges
 autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
@@ -158,7 +171,7 @@ Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
 Plug 'mohitleo9/vim-fidget', {
-  \ 'build' : {
+\ 'build' : {
   \   'unix' : 'sudo npm install',
   \   'mac'  : 'npm install',
   \ },

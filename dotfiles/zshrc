@@ -42,12 +42,10 @@ antigen bundles <<EOBUNDLES
   command-not-found
   npm
   rbenv
-  nvm
   brew
   bundler
   node
   brew-cask
-  docker
   golang
   history
   urltools
@@ -74,19 +72,11 @@ export SAVEHIST=$HISTSIZE
 # Default Editor
 export EDITOR=vim
 
-# Docker
-export DOCKER_HOST='tcp://127.0.0.1:2376'
-
 # Handy aliases
 alias clip="nc localhost 8377"
 alias chomp="tr -d '\n'"
 alias ccwd="pwd | chomp | pbcopy"
 alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'
-
-# NVM
-hash brew 2> /dev/null \
-  && source $(brew --prefix nvm)/nvm.sh \
-  && export NVM_DIR=~/.nvm
 
 # PyEnv
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -150,3 +140,7 @@ function install_jsctags {
   # https://github.com/mozilla/doctorjs/issues/52
   gsed -i '51i tags: [],' ./node_modules/jsctags/jsctags/ctags/index.js
 }
+
+unset DOCKER_TLS_VERIFY
+unset DOCKER_CERT_PATH
+unset DOCKER_HOST
