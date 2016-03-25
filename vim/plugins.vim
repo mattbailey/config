@@ -15,6 +15,9 @@ call plug#begin('~/.vim/plugged')
 " Sensible
 Plug 'tpope/vim-sensible'
 
+" GCOV
+Plug 'm42e/vim-gcov-marker'
+
 " FZF
 " Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

@@ -37,16 +37,8 @@ antigen bundles <<EOBUNDLES
   git
   git-extras
   extract
-  pip
-  lein
-  command-not-found
-  npm
-  rbenv
   brew
-  bundler
-  node
   brew-cask
-  golang
   history
   urltools
   zsh-users/zsh-syntax-highlighting

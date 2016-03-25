@@ -163,7 +163,7 @@ nmap <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 " RAML
 autocmd! BufNewFile,BufRead *.raml set filetype=yaml
 
-com! FormatJSON %!jq .
+com! FormatJSON %!jq -S .
 
 " Incsearch
 map /  <Plug>(incsearch-forward)
