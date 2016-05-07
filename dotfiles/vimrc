@@ -57,7 +57,7 @@ set clipboard=unnamed
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
 set lazyredraw          " Wait to redraw
-let html_no_rendering=1 " Don't render italic, bold, links in HTML
+"let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
 "let g:jellybeans_background_color_256 = 232
 "let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
@@ -67,15 +67,23 @@ let g:gruvbox_invert_signs=1
 "colorscheme wells-colors
 hi Conceal ctermfg=200
 color dracula
+let g:airline_theme='dracula'
+autocmd ColorScheme * hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
+autocmd ColorScheme * hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
+autocmd ColorScheme * hi Visual ctermbg=23 cterm=NONE
+autocmd ColorScheme * hi javaScriptFunction ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
+autocmd ColorScheme * hi Identifier ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
+autocmd ColorScheme * hi StorageClass ctermfg=117 ctermbg=NONE cterm=NONE guifg=#8be9fd guibg=NONE gui=italic
+autocmd ColorScheme * hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
+autocmd ColorScheme * hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
+autocmd ColorScheme * hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
+autocmd ColorScheme * hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
 set background=dark
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-
 
 " Make Columns stand out
-" highlight ColorColumn ctermbg=17
-" call matchadd('ColorColumn', '\%81v', 100)
-" call matchadd('ColorColumn', '\%101v', 100)
+highlight ColorColumn ctermbg=200
+call matchadd('ColorColumn', '\%101v', 100)
+" al;skdjaklsjdakl;sdjal;skdjaskl;djaskl;djaskldjalskdjalskjdaskldjaslkjdal;kjdasl;kdjaskldjaskl;dajsl
 
 set fillchars=vert:┃,fold:━
 highlight VertSplit cterm=none ctermbg=none ctermfg=247
@@ -90,7 +98,7 @@ au BufRead,BufNewFile *.tag set filetype=javascript
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.adoc set filetype=asciidoc
 
-nnoremap <leader>j :%!jq .<CR>
+nnoremap <leader>j :%!jq -S .<CR>
 nnoremap <leader>b :%!xxd<CR>
 
 """"""""""""""" pastetoggle
@@ -169,3 +177,5 @@ com! FormatJSON %!jq -S .
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+hi Comment cterm=italic
