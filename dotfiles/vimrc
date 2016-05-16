@@ -51,6 +51,7 @@ set expandtab
 set softtabstop=2 tabstop=2 shiftwidth=2
 set ruler
 set clipboard=unnamed
+set termguicolors
 
 "let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
 "set noshowmatch         " Don't match parentheses/brackets
