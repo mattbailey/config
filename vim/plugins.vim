@@ -15,8 +15,28 @@ call plug#begin('~/.vim/plugged')
 " Sensible
 Plug 'tpope/vim-sensible'
 
+" argwrap
+Plug 'FooSoft/vim-argwrap'
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
+" indentation object
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+
 " GCOV
 Plug 'm42e/vim-gcov-marker'
+
+" Paragraph commenter
+Plug 'tomtom/tcomment_vim'
+" gc & gcap (paragraph)
+
+" sorting
+Plug 'christoomey/vim-sort-motion'
+"gs2j => Sort down two lines (current + 2 below)
+"gsip => Sort the current paragraph
+"gsii => Sort the current indentation level
+"gs (visual)
+
 
 " FZF
 " Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
@@ -94,7 +114,7 @@ endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 " Scratch
-Plug 'mtth/scratch.vim'
+"Plug 'mtth/scratch.vim'
 
 " vimwiki
 Plug 'vimwiki/vimwiki'

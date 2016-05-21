@@ -139,6 +139,20 @@ command! -bang W w<bang>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
+" Make Ctrl-e jump to the end of the current line in the insert mode. This is
+" handy when you are in the middle of a line and would like to go to its end
+" without switching to the normal mode.
+inoremap <C-e> <C-o>$
+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
 """"""""""""""""""" Tab completion
 function! Inserttabwrapper()
     let col = col('.') - 1
