@@ -42,9 +42,27 @@ Plug 'christoomey/vim-sort-motion'
 " Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+if executable('ag')
+    let $FZF_DEFAULT_COMMAND='ag -g ""'
+endif
 "set rtp+=/usr/local/Cellar/fzf/HEAD
 "set rtp+=~/.local/src/fzf
 imap <c-x><c-l> <plug>(fzf-complete-line)
+map ; <esc>:FZF -m<cr>
+nmap <BS> :b#<CR>
+map <c-d> <esc>:Files<cr>
+map <c-f> <esc>:Ag 
+
 
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'vim-utils/vim-interruptless'
@@ -200,11 +218,11 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
 let g:used_javascript_libs = 'chai'
 Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'html']}
 autocmd FileType javascript vnoremap <buffer> F :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-nnoremap <c-f> V<c-f>
+autocmd FileType json vnoremap <buffer> F :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> F :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> F :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> F :call RangeCSSBeautify()<cr>
+"nnoremap <c-f> V<c-f>
 "Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
 "Plug 'moll/vim-node', {'for': ['javascript', 'html']}
 Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
@@ -262,35 +280,8 @@ let g:airline#extensions#tagbar#enabled = 1
 "let g:airline#extensions#hunks#non_zero_only = 1
 "let g:airline#extensions#whitespace#enabled = 1
 
-Plug 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
-let g:sneak#streak = 1
-
-Plug 'JazzCore/ctrlp-cmatcher', {'do': {'unix': './install.sh', 'mac': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh'}}
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_map = '<C-D>'
-nmap ; :CtrlPBuffer<CR>
-nnoremap <leader>. :CtrlPTag<cr>
-" nmap ; :CtrlPMixed<CR>
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ --ignore "**/*.swp"
-      \ --ignore "**/*.o"
-      \ --ignore "**/*.so"
-      \ -g ""'
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_dotfiles = 1
-let g:ctrlp_switch_buffer = 0
-
-Plug 'nixon/vim-vmath' " visual math library
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++
+"Plug 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
+"let g:sneak#streak = 1
 
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'jeetsukumaran/vim-markology' " Adds marks visualization
