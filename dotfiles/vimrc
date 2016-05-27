@@ -1,12 +1,6 @@
 let mapleader=","
 
 source $HOME/.config/vim/watch-for-changes.vim
-"""""""""""""""""""" NEOBUNDLE
-source $HOME/.config/vim/autoload/plug.vim
-
-if filereadable($HOME . "/.config/vim/plugins.vim")
-  source $HOME/.config/vim/plugins.vim
-endif
 
 """""""""""""""""""" GLOBAL
 filetype plugin indent on
@@ -60,46 +54,24 @@ set nocursorcolumn      " Don't paint cursor column
 set lazyredraw          " Wait to redraw
 "let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
-"let g:jellybeans_background_color_256 = 232
-"let g:jellybeans_overrides = { 'SpecialKey': {'ctermfg' : '123', 'guifg': '#b4ecff'},}
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_italicize_strings=1
-let g:gruvbox_invert_signs=1
-"colorscheme wells-colors
-hi Conceal ctermfg=200
-color dracula
-let g:airline_theme='dracula'
-autocmd ColorScheme * hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
-autocmd ColorScheme * hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
-autocmd ColorScheme * hi Visual ctermbg=23 cterm=NONE
-autocmd ColorScheme * hi javaScriptFunction ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
-autocmd ColorScheme * hi Identifier ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
-autocmd ColorScheme * hi StorageClass ctermfg=117 ctermbg=NONE cterm=NONE guifg=#8be9fd guibg=NONE gui=italic
-autocmd ColorScheme * hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
-autocmd ColorScheme * hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
-autocmd ColorScheme * hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
-autocmd ColorScheme * hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
+
+"""""""""""""""""""" NEOBUNDLE
+source $HOME/.config/vim/autoload/plug.vim
+
+if filereadable($HOME . "/.config/vim/plugins.vim")
+  source $HOME/.config/vim/plugins.vim
+endif
 
 " Make Columns stand out
 highlight ColorColumn ctermbg=200
 call matchadd('ColorColumn', '\%101v', 100)
-" al;skdjaklsjdakl;sdjal;skdjaskl;djaskl;djaskldjalskdjalskjdaskldjaslkjdal;kjdasl;kdjaskldjaskl;dajsl
-
 set fillchars=vert:┃,fold:━
 highlight VertSplit cterm=none ctermbg=none ctermfg=247
 
 """""""""""""""""""" FILES SPECIFIC
 
-au BufRead,BufNewFile *.jsm setfiletype javascript
-au BufRead,BufNewFile *.xul setfiletype xml
-au BufRead,BufNewFile *.md set filetype=markdown
-au BufRead,BufNewFile *.html set filetype=javascript
-au BufRead,BufNewFile *.tag set filetype=javascript
-au BufRead,BufNewFile *.json set filetype=json
-au BufRead,BufNewFile *.adoc set filetype=asciidoc
-
-nnoremap <leader>j :%!jq -S .<CR>
 nnoremap <leader>b :%!xxd<CR>
 
 """"""""""""""" pastetoggle
@@ -188,9 +160,21 @@ autocmd! BufNewFile,BufRead *.raml set filetype=yaml
 
 com! FormatJSON %!jq -S .
 
-" Incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-hi Comment cterm=italic
+" THEME
+colorscheme gotham256
+let g:airline_theme='gotham256'
+"hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
+hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
+hi Visual ctermbg=23 cterm=NONE
+hi Special cterm=italic gui=italic
+hi javaScriptFunction cterm=italic gui=italic
+hi javascriptFuncKeyword ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
+hi Identifier ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
+hi StorageClass ctermfg=117 ctermbg=NONE cterm=NONE guifg=#8be9fd guibg=NONE gui=italic
+hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
+hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
+hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
+hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
+hi Comment cterm=italic gui=italic
+hi Conceal ctermfg=200 guibg=200
+" END THEME

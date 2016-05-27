@@ -10,191 +10,53 @@ if has('vim_starting')
   endif
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
 
-" Sensible
-Plug 'tpope/vim-sensible'
+" COLORSCHEMES
+Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
 
-" argwrap
-Plug 'FooSoft/vim-argwrap'
-nnoremap <silent> <leader>a :ArgWrap<CR>
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
-" indentation object
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'
+Plug 'whatyouhide/vim-gotham'
+" END COLORSCHEMES
 
-" GCOV
-Plug 'm42e/vim-gcov-marker'
-
-" Paragraph commenter
-Plug 'tomtom/tcomment_vim'
-" gc & gcap (paragraph)
-
-" sorting
-Plug 'christoomey/vim-sort-motion'
-"gs2j => Sort down two lines (current + 2 below)
-"gsip => Sort the current paragraph
-"gsii => Sort the current indentation level
-"gs (visual)
-
-
-" FZF
-" Plug 'junegunn/fzf', { 'dir': '/usr/local/Cellar/fzf/HEAD', 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-if executable('ag')
-    let $FZF_DEFAULT_COMMAND='ag -g ""'
-endif
-"set rtp+=/usr/local/Cellar/fzf/HEAD
-"set rtp+=~/.local/src/fzf
-imap <c-x><c-l> <plug>(fzf-complete-line)
-map ; <esc>:FZF -m<cr>
-nmap <BS> :b#<CR>
-map <c-d> <esc>:Files<cr>
-map <c-f> <esc>:Ag 
-
-
+" BASE
 Plug 'vasconcelloslf/vim-interestingwords'
+
 Plug 'vim-utils/vim-interruptless'
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-let g:easytags_cmd = '/usr/local/bin/ctags'
-let g:easytags_async = 1
-let g:easytags_languages = {
-\   'javascript': {
-\     'cmd': '/usr/local/bin/jsctags',
-\       'args': [],
-\       'fileoutput_opt': '-f',
-\       'stdout_opt': '-f-',
-\       'recurse_flag': '-R'
-\   }
-\}
+Plug 'ryanoasis/vim-devicons'
 
-" Syntastic
-" Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-sensible'
 
-" Semantic hilighting
-Plug 'jaxbot/semantic-highlight.vim'
-let g:semanticTermColors = [14,15,13,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201]
-nnoremap <Leader>s :SemanticHighlightToggle<cr>
-let g:semanticEnableFileTypes = { 'javascript': 'js', 'vim': 'vim' }
-let g:semanticPersistCache = 1
+Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
 
-Plug 'easymotion/vim-easymotion'
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-
-Plug 'junegunn/rainbow_parentheses.vim'
-let g:rainbow#max_level = 16
-let g:rainbow#pairs = [['(', ')'], ['[', ']']]
-
-" List of colors that you do not want. ANSI code or #RRGGBB
-let g:rainbow#blacklist = [233, 234]
-
-"au VimEnter * RainbowParentheses
-
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzyword#converter()],
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-
-" Scratch
-"Plug 'mtth/scratch.vim'
-
-" vimwiki
-Plug 'vimwiki/vimwiki'
-
-" Autocomplete brackets
-Plug 'Raimondi/delimitMate'
-
-" Indentation stuff
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine' " Shows indentation lines
 "let g:indentLine_enabled = 0
-let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss']
+let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss','jsx','tag']
 let g:indentLine_char = '│'
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 239
 "unlet! g:indentLine_color_term g:indentLine_color_gui
 
-Plug 'tpope/vim-surround'
+Plug 'chrisbra/Colorizer'
+let g:colorizer_auto_color = 0
 
-Plug 'vim-scripts/SyntaxComplete'
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-    \  if &omnifunc == "" |
-    \    setlocal omnifunc=syntaxcomplete#Complete |
-    \  endif
-  endif
+Plug 'ervandew/supertab'
 
-" VimL extensions (OO)
-"Plug 'rizzatti/funcoo.vim'
-"Plug 'vim-scripts/genutils'
+Plug 'editorconfig/editorconfig-vim'
 
-" Neomake
-Plug 'benekastah/neomake'
-let g:neomake_go_go_maker = {
-    \ 'args': [ 'build' ],
-    \ 'errorformat':
-      \ '%W%f:%l: warning: %m,' .
-      \ '%E%f:%l:%c:%m,' .
-      \ '%E%f:%l:%m,' .
-      \ '%C%\s%\+%m,' .
-      \ '%-G#%.%#'
-  \ }
-let g:neomake_go_enabled_makers = ['golint', 'go']
-"autocmd! BufWritePre *.tag,*.html,*.py,*.js,*.rb,*.go,*.json WatchForChanges
-autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
-" let g:neomake_javascript_jshint_maker = {
-"    \ 'args': ['--verbose', '--extract', 'auto'],
-"    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-"    \ }
-let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_javascript_eslint_maker = {'args': ['--fix']}
-let g:neomake_airline = 1
-autocmd FileType html set ft=javascript
-autocmd FileType tag set ft=javascript
-" neomake
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
+Plug 'tpope/vim-fugitive'
 
-" Coloring
+Plug 'mhinz/vim-signify' " Like gitgutter, but extended and supports other SCM
+let g:signify_update_on_focusgained = 1
+let g:signify_line_hilight = 1
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
+" Plug 'jeetsukumaran/vim-markology' " Adds marks visualization
+
 Plug 'junegunn/goyo.vim'
+
 Plug 'junegunn/limelight.vim'
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 240
@@ -204,42 +66,35 @@ let g:limelight_conceal_guifg = '#777777'
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
 
-" Better / search
-Plug 'mtth/locate.vim'
+Plug 'easymotion/vim-easymotion'
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-" github interface
+" END BASE
+
+" TOOLS
+Plug 'vim-scripts/diffchar.vim'
+
+Plug 'rking/ag.vim'
+
+Plug 'benmills/vimux'
+
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
-" JavaScript stuff
-"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'othree/es.next.syntax.vim', {'for': ['javascript', 'html']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'html']}
-let g:used_javascript_libs = 'chai'
-Plug 'maksimr/vim-jsbeautify', {'for': ['javascript', 'html']}
-autocmd FileType javascript vnoremap <buffer> F :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> F :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> F :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> F :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> F :call RangeCSSBeautify()<cr>
-"nnoremap <c-f> V<c-f>
-"Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
-"Plug 'moll/vim-node', {'for': ['javascript', 'html']}
-Plug 'vim-scripts/JavaScript-Indent', {'for': ['javascript', 'html']}
-"Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
-Plug 'mohitleo9/vim-fidget', {
-\ 'do' : {
-  \   'unix' : 'sudo npm install',
-  \   'mac'  : 'npm install',
-  \ },
-\}
-
-Plug 'othree/html5.vim', {'for': ['html']}
-
-" Utilitarian stuff
-Plug 'chrisbra/Colorizer'
-let g:colorizer_auto_color = 0
 Plug 'SirVer/ultisnips'
+
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "context"
+
 Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -247,16 +102,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 nmap \e :NERDTreeToggle<CR>
-" Plug 'tpope/vim-vinegar'
 
-" Plug 'rizzatti/dash.vim' " Adds :Dash documentation explorer
-"Plug 'rizzatti/greper.vim' " Adds :G using ag/ack/grep
-Plug 'bruno-/vim-vertical-move'
-Plug 'benmills/vimux'
-" Plug 'mattboehm/vim-unstack'
-" Plug 'mattboehm/vim-accordion'
-Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
-Plug 'ervandew/supertab'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 Plug 'zhaocai/GoldenView.Vim' "Always have a nice view for vim split windows
 let g:goldenview__enable_default_mapping = 0
 nmap <silent> \l <Plug>GoldenViewSplit
@@ -280,14 +128,35 @@ let g:airline#extensions#tagbar#enabled = 1
 "let g:airline#extensions#hunks#non_zero_only = 1
 "let g:airline#extensions#whitespace#enabled = 1
 
-"Plug 'justinmk/vim-sneak' " Normal mode binding s{char}{char} searching
-"let g:sneak#streak = 1
+Plug 'benekastah/neomake'
+let g:neomake_go_go_maker = {
+    \ 'args': [ 'build' ],
+    \ 'errorformat':
+      \ '%W%f:%l: warning: %m,' .
+      \ '%E%f:%l:%c:%m,' .
+      \ '%E%f:%l:%m,' .
+      \ '%C%\s%\+%m,' .
+      \ '%-G#%.%#'
+  \ }
+let g:neomake_go_enabled_makers = ['golint', 'go']
+"autocmd! BufWritePre *.tag,*.html,*.py,*.js,*.rb,*.go,*.json WatchForChanges
+autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
+" let g:neomake_javascript_jshint_maker = {
+"    \ 'args': ['--verbose', '--extract', 'auto'],
+"    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+"    \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_javascript_eslint_maker = {'args': ['--fix']}
+let g:neomake_airline = 1
+"autocmd FileType html set ft=javascript
+"autocmd FileType tag set ft=javascript
+"autocmd FileType jsx set ft=javascript
 
-Plug 'editorconfig/editorconfig-vim'
-" Plug 'jeetsukumaran/vim-markology' " Adds marks visualization
-Plug 'osyo-manga/vim-over' " Adds :OverCommandLine live editing of expressions
-Plug 'ivyl/vim-bling' " Adds blinking to search
-let g:bling_count = 5
+nmap <Leader><Space>o :lopen<CR>      " open location window
+nmap <Leader><Space>c :lclose<CR>     " close location window
+nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+nmap <Leader><Space>n :lnext<CR>      " next error/warning
+nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'} " Adds complete undotree
 nnoremap \u :UndotreeToggle<CR>
@@ -296,75 +165,189 @@ if has("persistent_undo")
   set undofile
 endif
 
-" Misc development enhancements
 Plug 'tpope/vim-dispatch' " Adds :make
+
 Plug 'wellle/targets.vim'
+
 Plug 'majutsushi/tagbar' " \g to open ctags tagbar
 nmap \g :TagbarToggle<CR>
-Plug 'tpope/vim-fugitive'
+
 " Plug 'vim-scripts/perforce'
 " let g:p4CheckOutDefault = 1
 
-Plug 'mhinz/vim-signify' " Like gitgutter, but extended and supports other SCM
-let g:signify_update_on_focusgained = 1
-let g:signify_line_hilight = 1
-let g:signify_vcs_list = [ 'git', 'hg' ]
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
 
-" One-off syntax additions
-Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['javascript']
-Plug 'tpope/vim-markdown', {'for' : 'markdown'}
-Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
-" Checking out neocomplete, don't use two syntax completion suites
-" Plug 'Valloric/YouCompleteMe', {
-"       \ 'do' : {
-"       \     'cygwin' : './install.sh',
-"       \     'mac' : './install.sh',
-"       \     'unix' : './install.sh',
-"       \    },
-"       \ }
-" NeoComplete requires OS X build with: brew install macvim --with-cscope --with-lua --HEAD
-" Plug 'Shougo/neocomplete'
-" if filereadable($HOME . "/.config/vim/neocomplete_config.vim")
-"   source $HOME/.config/vim/neocomplete_config.vim
-" endif
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-Plug 'vim-scripts/diffchar.vim'
-Plug 'rking/ag.vim'
+if executable('ag')
+    let $FZF_DEFAULT_COMMAND='ag -g ""'
+endif
+"set rtp+=/usr/local/Cellar/fzf/HEAD
+"set rtp+=~/.local/src/fzf
+imap <c-x><c-l> <plug>(fzf-complete-line)
+map ; <esc>:FZF -m<cr>
+nmap <BS> :b#<CR>
+map <c-d> <esc>:Files<cr>
+map <c-f> <esc>:Ag 
 
-" Commentary
+" END TOOLS
+
+
+" BASE CODE
+Plug 'kana/vim-textobj-user'
+
+Plug 'kana/vim-textobj-indent'
+
 Plug 'tpope/vim-commentary'
 
-" Tab completion
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "context"
+Plug 'osyo-manga/vim-over' " Adds :OverCommandLine live editing of expressions
 
-" CSV parsing
-Plug 'chrisbra/csv.vim'
+Plug 'Raimondi/delimitMate' " Autocomplete brackets
 
-" Ruby stuff
+Plug 'tpope/vim-surround' " delimit autocomplete for other langs
+
+Plug 'FooSoft/vim-argwrap' " Unfold arguments/arrays/etc
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['javascript']
+
+Plug 'tpope/vim-markdown', {'for' : 'markdown'}
+
+Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_async = 1
+let g:easytags_languages = {
+\   'javascript': {
+\     'cmd': '/usr/local/bin/jsctags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   }
+\}
+
+Plug 'christoomey/vim-sort-motion'
+"gs2j => Sort down two lines (current + 2 below)
+"gsip => Sort the current paragraph
+"gsii => Sort the current indentation level
+"gs (visual)
+
+Plug 'tomtom/tcomment_vim' " Comment wrapper
+" gc & gcap (paragraph)
+
+Plug 'm42e/vim-gcov-marker' " Code coverage marker
+
+" END BASE CODE
+
+" SEARCH
+Plug 'ivyl/vim-bling' " Adds blinking to search
+let g:bling_count = 5
+
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-fuzzy.vim'
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+" END SEARCH
+
+" JAVASCRIPT
+"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
+
+Plug 'othree/yajs.vim'
+
+"Plug 'luochen1990/rainbow', { 'for': ['javascript','html','tag','jsx'] }
+let g:rainbow_active = 1
+
+"Plug 'mxw/vim-jsx', { 'for': ['javascript','html','tag','jsx'] }
+
+"Plug 'nicklasos/vim-jsx-riot', { 'for': ['javascript','html','tag','jsx'] }
+
+Plug 'othree/es.next.syntax.vim'
+
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'chai'
+
+"Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','tag','jsx'] }
+autocmd FileType javascript vnoremap <buffer> F :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> F :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> F :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> F :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> F :call RangeCSSBeautify()<cr>
+"nnoremap <c-f> V<c-f>
+
+"Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
+
+"Plug 'moll/vim-node', {'for': ['javascript', 'html']}
+
+Plug 'vim-scripts/JavaScript-Indent', { 'for': ['javascript','html','tag','jsx'] }
+
+Plug 'mohitleo9/vim-fidget', {
+\ 'do' : {
+  \   'unix' : 'sudo npm install',
+  \   'mac'  : 'npm install',
+  \ },
+\}
+
+Plug 'othree/html5.vim'
+Plug 'othree/html5-syntax.vim'
+" END JAVASCRIPT
+
+" RUBY
 Plug 'tpope/vim-rake', {'for' : 'ruby'}
 Plug 'tpope/vim-cucumber', {'for' : 'ruby'}
 Plug 'tpope/vim-bundler', {'for' : 'ruby'}
-Plug 'tpope/vim-endwise'
 Plug 'vim-ruby/vim-ruby', {'for' : 'ruby'}
+" END RUBY
 
-" Golang stuff
+" GOLANG
 Plug 'fatih/vim-go', {'for' : 'go'}
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+" END GOLANG
 
-" Colorschemes
-Plug 'wellsjo/wells-colorscheme.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'ajh17/Spacegray.vim'
-Plug 'ciaranm/inkpot'
-Plug 'morhetz/gruvbox'
-Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
+" SYNTAX FORCE
+au BufRead,BufNewFile *.jsm setfiletype javascript
+au BufRead,BufNewFile *.xul setfiletype xml
+au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.html set filetype=javascript
+au BufRead,BufNewFile *.tag set filetype=javascript
+au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.adoc set filetype=asciidoc
+" END SYNTAX FORCE
 
-
-Plug 'ryanoasis/vim-devicons'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
+
