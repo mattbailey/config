@@ -12,7 +12,6 @@ set background=dark
 set relativenumber
 set number
 set mouse=a
-set t_Co=256
 syntax on
 set encoding=utf-8
 set hidden
@@ -163,6 +162,9 @@ com! FormatJSON %!jq -S .
 " THEME
 "colorscheme gotham256
 "let g:airline_theme='gotham256'
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+let g:gruvbox_italicize_strings=1
 colorscheme gruvbox
 
 "hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
