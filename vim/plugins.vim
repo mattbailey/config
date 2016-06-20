@@ -13,11 +13,13 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " COLORSCHEMES
-Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
+"Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
 
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
 Plug 'whatyouhide/vim-gotham'
+
+Plug 'morhetz/gruvbox'
 " END COLORSCHEMES
 
 " BASE
@@ -79,6 +81,8 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
+Plug 'junegunn/vim-easy-align'
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 " END BASE
 
 " TOOLS
@@ -221,6 +225,8 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['javascript']
 
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
+
+Plug 'davinche/godown-vim', {'for': 'markdown'}
 
 Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
 

@@ -161,8 +161,10 @@ autocmd! BufNewFile,BufRead *.raml set filetype=yaml
 com! FormatJSON %!jq -S .
 
 " THEME
-colorscheme gotham256
-let g:airline_theme='gotham256'
+"colorscheme gotham256
+"let g:airline_theme='gotham256'
+colorscheme gruvbox
+
 "hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
 hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
 hi Visual ctermbg=23 cterm=NONE
