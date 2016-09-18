@@ -109,6 +109,7 @@ cmap <C-g> <C-u><ESC>
 command! -bang W w<bang>
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
+nnoremap q <c-v>
 
 " Make Ctrl-e jump to the end of the current line in the insert mode. This is
 " handy when you are in the middle of a line and would like to go to its end

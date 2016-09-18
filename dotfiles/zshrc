@@ -69,6 +69,7 @@ alias clip="nc localhost 8377"
 alias chomp="tr -d '\n'"
 alias ccwd="pwd | chomp | pbcopy"
 alias -g 'sprunge'='curl -F "sprunge=<-" http://sprunge.us'
+alias https='http --default-scheme=https'
 
 # PyEnv
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

@@ -44,8 +44,6 @@ let g:indentLine_color_term = 239
 Plug 'chrisbra/Colorizer'
 let g:colorizer_auto_color = 0
 
-Plug 'ervandew/supertab'
-
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'tpope/vim-fugitive'
@@ -95,14 +93,12 @@ Plug 'benmills/vimux'
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
 Plug 'SirVer/ultisnips'
-
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "context"
-
-Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+Plug 'honza/vim-snippets'
 
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 nmap \e :NERDTreeToggle<CR>
@@ -255,16 +251,25 @@ Plug 'tomtom/tcomment_vim' " Comment wrapper
 
 Plug 'm42e/vim-gcov-marker' " Code coverage marker
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-
-" Use deoplete.
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
-" Use smartcase.
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+  \]
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
+Plug 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabClosePreviewOnPopupClose = 1
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
@@ -348,6 +353,12 @@ Plug 'mohitleo9/vim-fidget', {
 
 Plug 'othree/html5.vim'
 Plug 'othree/html5-syntax.vim'
+
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern && npm install' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+
 " END JAVASCRIPT
 
 " RUBY
