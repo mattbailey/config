@@ -6,7 +6,7 @@ export PRIVATE="${HOME}/.private"
 export LESS="-F -X -R"
 
 # Source antigen
-source ${SRC}/antigen/antigen.zsh
+source $(brew --prefix)/share/antigen/antigen.zsh
 
 # Set locale properly
 export LANG=en_US.UTF-8
@@ -44,6 +44,7 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   kennethreitz/autoenv
   seebi/dircolors-solarized
+  mafredri/zsh-async
 EOBUNDLES
 
 # My theme
