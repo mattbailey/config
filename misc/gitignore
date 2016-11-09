@@ -3,6 +3,7 @@
 .LSOverride
 .tern-project
 .drone.secrets.yml
+*.icloud
 
 # Icon must end with two \r
 Icon
