@@ -166,7 +166,8 @@ com! FormatJSON %!jq -S .
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=1
-colorscheme gruvbox
+colorscheme nova
+set background=dark
 
 "hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
 hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE

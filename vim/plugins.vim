@@ -15,11 +15,13 @@ call plug#begin('~/.vim/bundle')
 " COLORSCHEMES
 "Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
 
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
-Plug 'whatyouhide/vim-gotham'
+"Plug 'whatyouhide/vim-gotham'
 
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
+
+Plug 'zanglg/nova.vim'
 " END COLORSCHEMES
 
 " BASE
@@ -47,6 +49,8 @@ let g:colorizer_auto_color = 0
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'jreybert/vimagit'
 
 Plug 'mhinz/vim-signify' " Like gitgutter, but extended and supports other SCM
 let g:signify_update_on_focusgained = 1
@@ -81,6 +85,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 Plug 'junegunn/vim-easy-align'
 au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
+
 " END BASE
 
 " TOOLS
@@ -386,5 +391,10 @@ au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.adoc set filetype=asciidoc
 " END SYNTAX FORCE
 
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-x>'
+let g:ctrlp_cmd = 'CtrlP'
+
+Plug 'tracyone/ctrlp-leader-guide'
 call plug#end()
 

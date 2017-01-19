@@ -5,6 +5,8 @@
 .AppleDouble
 .LSOverride
 .tern-port
+yarn-error.log
+npm-error.log
 
 # Icon must end with two \r
 Icon

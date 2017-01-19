@@ -82,6 +82,9 @@ export GOPATH=${HOME}/go
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="-e -m"
 
+# Rustup
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env
+
 # gpg-agent is shitty
 unset GPG_TTY
 
@@ -140,3 +143,5 @@ unset DOCKER_CERT_PATH
 unset DOCKER_HOST
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+#weather -z 99019 || exit 0
