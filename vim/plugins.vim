@@ -116,7 +116,12 @@ nmap <silent> \l <Plug>GoldenViewSplit
 nmap <silent> \m <Plug>GoldenViewSwitchMain
 nmap <silent> \M <Plug>GoldenViewSwitchToggle
 
-Plug 'bling/vim-airline'
+Plug 'w0rp/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+Plug 'vim-airline/vim-airline'
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
@@ -133,26 +138,27 @@ let g:airline#extensions#tagbar#enabled = 1
 "let g:airline#extensions#hunks#non_zero_only = 1
 "let g:airline#extensions#whitespace#enabled = 1
 
-Plug 'benekastah/neomake'
-let g:neomake_go_go_maker = {
-    \ 'args': [ 'build' ],
-    \ 'errorformat':
-      \ '%W%f:%l: warning: %m,' .
-      \ '%E%f:%l:%c:%m,' .
-      \ '%E%f:%l:%m,' .
-      \ '%C%\s%\+%m,' .
-      \ '%-G#%.%#'
-  \ }
-let g:neomake_go_enabled_makers = ['golint', 'go']
+
+"Plug 'benekastah/neomake'
+"let g:neomake_go_go_maker = {
+"    \ 'args': [ 'build' ],
+"    \ 'errorformat':
+"      \ '%W%f:%l: warning: %m,' .
+"      \ '%E%f:%l:%c:%m,' .
+"      \ '%E%f:%l:%m,' .
+"      \ '%C%\s%\+%m,' .
+"      \ '%-G#%.%#'
+"  \ }
+"let g:neomake_go_enabled_makers = ['golint', 'go']
 "autocmd! BufWritePre *.tag,*.html,*.py,*.js,*.rb,*.go,*.json WatchForChanges
-autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
+"autocmd! BufWritePost *.tag,*.html,*.py,*.js,*.rb,*.go,*.json Neomake
 " let g:neomake_javascript_jshint_maker = {
 "    \ 'args': ['--verbose', '--extract', 'auto'],
 "    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
 "    \ }
-let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_javascript_enabled_makers = ['eslint']
 " let g:neomake_javascript_eslint_maker = {'args': ['--fix']}
-let g:neomake_airline = 1
+"let g:neomake_airline = 1
 "autocmd FileType html set ft=javascript
 "autocmd FileType tag set ft=javascript
 "autocmd FileType jsx set ft=javascript
@@ -363,6 +369,8 @@ Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'np
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
+Plug 'leshill/vim-json', { 'for': ['json'] }
+Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 
 " END JAVASCRIPT
 

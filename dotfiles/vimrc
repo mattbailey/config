@@ -184,3 +184,6 @@ hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=itali
 hi Comment cterm=italic gui=italic
 hi Conceal ctermfg=200 guibg=200
 " END THEME
+"
+au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
+

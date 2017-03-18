@@ -25,6 +25,7 @@ PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/sbin:$PATH"
 PATH="/usr/sbin:$PATH"
+PATH="/Developer/NVIDIA/CUDA-8.0/bin:$PATH"
 PATH="$PATH:$PATH_START"
 export PATH="$PATH:$PATH_START"
 
@@ -141,6 +142,10 @@ function install_jsctags {
 unset DOCKER_TLS_VERIFY
 unset DOCKER_CERT_PATH
 unset DOCKER_HOST
+export CUDA_HOME=${HOME}/src/cuda
+#export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib\
+#                         ${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+#export DYLD_LIBRARY_PATH=${HOME}/cuda:$DYLD_LIBRARY_PATH
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
