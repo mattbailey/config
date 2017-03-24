@@ -26,6 +26,7 @@ PATH="/usr/local/sbin:$PATH"
 PATH="/sbin:$PATH"
 PATH="/usr/sbin:$PATH"
 PATH="/Developer/NVIDIA/CUDA-8.0/bin:$PATH"
+PATH="~/anaconda3/bin:$PATH"
 PATH="$PATH:$PATH_START"
 export PATH="$PATH:$PATH_START"
 
@@ -150,3 +151,9 @@ export CUDA_HOME=${HOME}/src/cuda
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 #weather -z 99019 || exit 0
+
+## VI-mode
+#bindkey -v
+
+# 10ms for key sequences
+#KEYTIMEOUT=1

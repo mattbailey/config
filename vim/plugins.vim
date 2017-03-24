@@ -31,7 +31,10 @@ Plug 'vim-utils/vim-interruptless'
 
 Plug 'ryanoasis/vim-devicons'
 
-Plug 'tpope/vim-sensible'
+if !has('nvim')
+  " this is bad in neovim
+  Plug 'tpope/vim-sensible'
+endif
 
 Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
 
@@ -119,6 +122,7 @@ nmap <silent> \M <Plug>GoldenViewSwitchToggle
 Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
 \}
 
 Plug 'vim-airline/vim-airline'
