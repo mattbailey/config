@@ -295,6 +295,14 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
   return deoplete#mappings#close_popup() . "\<CR>"
 endfunction
+
+Plug 'sbdchd/neoformat'
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.jsx Neoformat
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=all
+autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=all
+let g:neoformat_try_formatprg = 1
+
 " END BASE CODE
 
 " SEARCH
