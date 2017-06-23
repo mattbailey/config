@@ -162,11 +162,11 @@ com! FormatJSON %!jq -S .
 
 " THEME
 "colorscheme gotham256
-"let g:airline_theme='gotham256'
+colorscheme dues
+let g:airline_theme='alduin'
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=1
-colorscheme nova
 set background=dark
 
 "hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
@@ -182,7 +182,7 @@ hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NO
 hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
 hi Comment cterm=italic gui=italic
-hi Conceal ctermfg=200 guibg=200
+hi jsArrowFunction ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
 " END THEME
 "
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"

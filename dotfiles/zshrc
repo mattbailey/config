@@ -30,6 +30,9 @@ PATH="~/anaconda3/bin:$PATH"
 PATH="$PATH:$PATH_START"
 export PATH="$PATH:$PATH_START"
 
+# Pure config
+#export PURE_PROMPT_SYMBOL=🍺
+
 # Load private zshenv
 [[ -f "${PRIVATE}/zshenv" ]] && source "${PRIVATE}/zshenv"
 
@@ -46,11 +49,12 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   kennethreitz/autoenv
   seebi/dircolors-solarized
+  sindresorhus/pure
   mafredri/zsh-async
 EOBUNDLES
 
 # My theme
-antigen theme mattbailey/pure pure
+#antigen theme mattbailey/pure pure
 
 # End configuration.
 antigen apply
@@ -61,7 +65,7 @@ tabs -2
 # History settings
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-export HISTSIZE=10000
+export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
 # Default Editor
@@ -92,9 +96,9 @@ unset GPG_TTY
 
 # Dircolors
 hash gdircolors 2> /dev/null \
-  && eval `gdircolors ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized.git/dircolors.256dark`
+  && eval `gdircolors ~/.antigen/bundles/seebi/dircolors-solarized/dircolors.256dark`
 hash dircolors 2> /dev/null \
-  && eval `dircolors ~/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized.git/dircolors.256dark`
+  && eval `dircolors ~/.antigen/bundles/seebi/dircolors-solarized/dircolors.256dark`
 
 fleetctl-switch(){
   export FLEETCTL_TUNNEL=$1:22
@@ -149,6 +153,8 @@ export CUDA_HOME=${HOME}/src/cuda
 #export DYLD_LIBRARY_PATH=${HOME}/cuda:$DYLD_LIBRARY_PATH
 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+zstyle ':completion:*' rehash true
 
 #weather -z 99019 || exit 0
 

@@ -22,10 +22,10 @@ done
 cd -
 
 # Install fzf
-git -C ${SRC} clone https://github.com/junegunn/fzf.git \
-  || git -C ${SRC}/fzf pull
-[[ -f "${HOME}/fzf.zsh" ]] \
-  || ${SRC}/fzf/install
+#git -C ${SRC} clone https://github.com/junegunn/fzf.git \
+#  || git -C ${SRC}/fzf pull
+#[[ -f "${HOME}/fzf.zsh" ]] \
+#  || ${SRC}/fzf/install
 
 # Install termcap files
 for terminfo in ${DIR}/scripts/*.terminfo; do
@@ -38,5 +38,5 @@ for dir in ${cacheDirs[@]}; do
 done
 
 # Install antigen
-git -C ${SRC} clone https://github.com/zsh-users/antigen.git \
-  || git -C ${SRC}/antigen pull
+#git -C ${SRC} clone https://github.com/zsh-users/antigen.git \
+#  || git -C ${SRC}/antigen pull

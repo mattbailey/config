@@ -21,7 +21,9 @@ call plug#begin('~/.vim/bundle')
 
 "Plug 'morhetz/gruvbox'
 
-Plug 'zanglg/nova.vim'
+"Plug 'zanglg/nova.vim'
+
+Plug 'ajmwagar/vim-dues'
 " END COLORSCHEMES
 
 " BASE
@@ -40,7 +42,7 @@ Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
 
 Plug 'Yggdroot/indentLine' " Shows indentation lines
 "let g:indentLine_enabled = 0
-let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss','jsx','tag']
+let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss','jsx','tag', 'javascript.jsx']
 let g:indentLine_char = '│'
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 239
@@ -52,6 +54,8 @@ let g:colorizer_auto_color = 0
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'tpope/vim-rhubarb'
 
 Plug 'jreybert/vimagit'
 
@@ -88,7 +92,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 Plug 'junegunn/vim-easy-align'
 au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
-
 " END BASE
 
 " TOOLS
@@ -126,6 +129,7 @@ let g:ale_linters = {
 \}
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
@@ -217,6 +221,9 @@ map <c-f> <esc>:Ag
 
 
 " BASE CODE
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+
 Plug 'kana/vim-textobj-user'
 
 Plug 'kana/vim-textobj-indent'
@@ -232,8 +239,8 @@ Plug 'tpope/vim-surround' " delimit autocomplete for other langs
 Plug 'FooSoft/vim-argwrap' " Unfold arguments/arrays/etc
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
-Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['javascript']
+Plug 'sheerun/vim-polyglot', {'do': './build'}
+"let g:polyglot_disabled = ['javascript', 'go', 'markdown', 'javascript.jsx']
 
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 
@@ -246,6 +253,13 @@ Plug 'xolox/vim-easytags'
 let g:easytags_cmd = '/usr/local/bin/ctags'
 let g:easytags_async = 1
 let g:easytags_languages = {
+\   'javascript.jsx': {
+\     'cmd': '/usr/local/bin/jsctags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   },
 \   'javascript': {
 \     'cmd': '/usr/local/bin/jsctags',
 \       'args': [],
@@ -267,6 +281,8 @@ Plug 'tomtom/tcomment_vim' " Comment wrapper
 Plug 'm42e/vim-gcov-marker' " Code coverage marker
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#functions = {}
@@ -276,8 +292,8 @@ let g:deoplete#omni#functions.javascript = [
   \]
 set completeopt=longest,menuone,preview
 let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'flow']
+let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs', 'flow']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
@@ -299,8 +315,8 @@ endfunction
 Plug 'sbdchd/neoformat'
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.jsx Neoformat
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=all
-autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=all
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=es5
+autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=es5
 let g:neoformat_try_formatprg = 1
 
 " END BASE CODE
@@ -337,49 +353,42 @@ endfunction
 " END SEARCH
 
 " JAVASCRIPT
-"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
+"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html', 'javascript.jsx']}
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_plugin_jsdoc = 1
 
-Plug 'othree/yajs.vim'
+let g:javascript_plugin_flow = 1
 
-"Plug 'luochen1990/rainbow', { 'for': ['javascript','html','tag','jsx'] }
-let g:rainbow_active = 1
+Plug 'jaxbot/semantic-highlight.vim'
 
-"Plug 'mxw/vim-jsx', { 'for': ['javascript','html','tag','jsx'] }
-
-"Plug 'nicklasos/vim-jsx-riot', { 'for': ['javascript','html','tag','jsx'] }
-
-Plug 'othree/es.next.syntax.vim'
-
-Plug 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'chai'
-
-"Plug 'maksimr/vim-jsbeautify', { 'for': ['javascript','html','tag','jsx'] }
-autocmd FileType javascript vnoremap <buffer> F :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> F :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> F :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> F :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> F :call RangeCSSBeautify()<cr>
 "nnoremap <c-f> V<c-f>
 
-"Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html']}
-
-"Plug 'moll/vim-node', {'for': ['javascript', 'html']}
-
-Plug 'vim-scripts/JavaScript-Indent', { 'for': ['javascript','html','tag','jsx'] }
-
-Plug 'mohitleo9/vim-fidget', {
-\ 'do' : {
-  \   'unix' : 'sudo npm install',
-  \   'mac'  : 'npm install',
-  \ },
-\}
+Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html', 'javascript.jsx']}
 
 Plug 'othree/html5.vim'
 Plug 'othree/html5-syntax.vim'
 
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install -g tern && npm install' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
 
 Plug 'leshill/vim-json', { 'for': ['json'] }
 Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
