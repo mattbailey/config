@@ -12,20 +12,6 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-" COLORSCHEMES
-"Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
-
-"Plug 'frankier/neovim-colors-solarized-truecolor-only'
-
-"Plug 'whatyouhide/vim-gotham'
-
-"Plug 'morhetz/gruvbox'
-
-"Plug 'zanglg/nova.vim'
-
-Plug 'ajmwagar/vim-dues'
-" END COLORSCHEMES
-
 " BASE
 Plug 'vasconcelloslf/vim-interestingwords'
 
@@ -43,9 +29,12 @@ Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
 Plug 'Yggdroot/indentLine' " Shows indentation lines
 "let g:indentLine_enabled = 0
 let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss','jsx','tag', 'javascript.jsx']
-let g:indentLine_char = '│'
+"let g:indentLine_char = '│'
+let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
 let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#f5c635'
+
 "unlet! g:indentLine_color_term g:indentLine_color_gui
 
 Plug 'chrisbra/Colorizer'
@@ -68,14 +57,14 @@ let g:signify_vcs_list = [ 'git', 'hg' ]
 
 Plug 'junegunn/goyo.vim'
 
-Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/limelight.vim'
 " Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 240
+"let g:limelight_conceal_ctermfg = 240
 " Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = '#777777'
+"let g:limelight_conceal_guifg = '#777777'
 " Automatically use limelight with goyo
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
+"autocmd User GoyoEnter Limelight
+"autocmd User GoyoLeave Limelight!
 
 Plug 'easymotion/vim-easymotion'
 " <Leader>f{char} to move to {char}
@@ -425,5 +414,18 @@ let g:ctrlp_map = '<c-x>'
 let g:ctrlp_cmd = 'CtrlP'
 
 Plug 'tracyone/ctrlp-leader-guide'
-call plug#end()
 
+" COLORSCHEMES
+"Plug 'zenorocha/dracula-theme', {'rtp' : './vim'}
+
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+
+"Plug 'whatyouhide/vim-gotham'
+
+"Plug 'morhetz/gruvbox'
+
+"Plug 'zanglg/nova.vim'
+Plug 'ajmwagar/vim-deus'
+" END COLORSCHEMES
+
+call plug#end()

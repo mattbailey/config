@@ -54,7 +54,6 @@ set lazyredraw          " Wait to redraw
 "let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
 
 """""""""""""""""""" NEOBUNDLE
 source $HOME/.config/vim/autoload/plug.vim
@@ -162,28 +161,42 @@ com! FormatJSON %!jq -S .
 
 " THEME
 "colorscheme gotham256
-colorscheme dues
+colorscheme deus
 let g:airline_theme='alduin'
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=1
 set background=dark
 
-"hi NonText ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE "line endings
-hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
-hi Visual ctermbg=23 cterm=NONE
+" Italic Modifiers
 hi Special cterm=italic gui=italic
 hi javaScriptFunction cterm=italic gui=italic
+hi Comment cterm=italic gui=italic
+hi StorageClass cterm=italic gui=italic guifg=#d86e37
+
+hi NonText ctermfg=59 cterm=NONE guifg=#525563 gui=NONE 
+hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
 hi javascriptFuncKeyword ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
 hi Identifier ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
-hi StorageClass ctermfg=117 ctermbg=NONE cterm=NONE guifg=#8be9fd guibg=NONE gui=italic
 hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
 hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
-hi Comment cterm=italic gui=italic
-hi jsArrowFunction ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
+
+" JS Stuff
+hi jsOperator guifg=#7ebff7 gui=italic
+hi jsSpreadOperator guifg=#14a95b
+hi jsFuncCall guifg=#a96c52
+hi jsIfElseBraces guifg=#009c96
+hi jsFuncBraces guifg=#007c78
+hi jsObjectBraces guifg=#00e5dc
+hi jsParensIfElse guifg=#e5e560 gui=bold
+hi jsObjectProp gui=bold
+hi jsParenIfElse guifg=#f78e9c
 " END THEME
 "
 au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
 
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
