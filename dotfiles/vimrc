@@ -183,6 +183,8 @@ hi rubyBlockParameter ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NO
 hi rubyRailsUserClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi cssURL ctermfg=215 ctermbg=NONE cterm=NONE guifg=#ffb86c guibg=NONE gui=italic
 
+hi ALEError ctermbg=none cterm=underline gui=underline guibg=none
+
 " JS Stuff
 hi jsOperator guifg=#7ebff7 gui=italic
 hi jsSpreadOperator guifg=#14a95b
