@@ -26,14 +26,14 @@ endif
 
 Plug 'justinmk/vim-gtfo' " Adds gof got, normal mode
 
-Plug 'Yggdroot/indentLine' " Shows indentation lines
-"let g:indentLine_enabled = 0
-let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','javascript','bash','sh','html','css','scss','jsx','tag', 'javascript.jsx']
-"let g:indentLine_char = '│'
-let g:indentLine_char = '┆'
-let g:indentLine_faster = 1
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#f5c635'
+"Plug 'Yggdroot/indentLine' " Shows indentation lines
+""let g:indentLine_enabled = 0
+"let g:indentLine_fileType = ['vim','raml','ruby','yaml','json','bash','sh','html','css','scss','tag','cucumber']
+""let g:indentLine_char = '│'
+"let g:indentLine_char = '┆'
+"let g:indentLine_faster = 1
+"let g:indentLine_color_term = 239
+"let g:indentLine_color_gui = '#f5c635'
 
 "unlet! g:indentLine_color_term g:indentLine_color_gui
 
@@ -41,6 +41,7 @@ Plug 'chrisbra/Colorizer'
 let g:colorizer_auto_color = 0
 
 Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 Plug 'tpope/vim-fugitive'
 
@@ -115,7 +116,10 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
+\   'go': ['gometalinter'],
 \}
+
+let g:ale_go_gometalinter_options = '-E staticcheck client.go'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -230,6 +234,7 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 
 Plug 'sheerun/vim-polyglot', {'do': './build'}
 "let g:polyglot_disabled = ['javascript', 'go', 'markdown', 'javascript.jsx']
+let g:polyglot_disabled = ['graphql']
 
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 
@@ -269,6 +274,8 @@ Plug 'tomtom/tcomment_vim' " Comment wrapper
 
 Plug 'm42e/vim-gcov-marker' " Code coverage marker
 
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
@@ -286,6 +293,29 @@ let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs', 'flow']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
+" Showing function signature and inline doc.
+Plug 'Shougo/echodoc.vim'
+
+" LSP config
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'dockerfile': ['docker-langserver --stdio'],
+    \ 'javascript': ['flow-language-server', '--try-flow-bin --stdio'],
+    \ 'javascript.jsx': ['flow-language-server', '--try-flow-bin --stdio'],
+    \ 'python': ['pyls'],
+    \ 'go': ['go-langserver'],
+    \ }
+
+"    \ 'javascript': ['javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -302,10 +332,16 @@ function! s:my_cr_function() abort
 endfunction
 
 Plug 'sbdchd/neoformat'
-autocmd BufWritePre *.js Neoformat
-autocmd BufWritePre *.jsx Neoformat
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=es5
-autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=100\ --single-quote\ --trailing-comma=es5
+"autocmd BufWritePre *.js Neoformat
+"autocmd BufWritePre *.jsx Neoformat
+"autocmd BufWritePre *.json Neoformat
+autocmd BufWritePre *.md Neoformat
+autocmd BufWritePre *.go Neoformat
+autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=80\ --single-quote
+autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=80\ --single-quote
+autocmd FileType markdown set formatprg=prettier\ --stdin\ --parser=markdown
+autocmd FileType json set formatprg=prettier\ --stdin\ --parser=json
+autocmd FileType go set formatprg=goimports
 let g:neoformat_try_formatprg = 1
 
 " END BASE CODE
@@ -314,6 +350,7 @@ let g:neoformat_try_formatprg = 1
 Plug 'ivyl/vim-bling' " Adds blinking to search
 let g:bling_count = 5
 
+" NOTE: keep an eye, this has been merged into vim 8.0.1238 natively
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 map z/ <Plug>(incsearch-fuzzy-/)
