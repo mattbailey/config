@@ -274,7 +274,10 @@ Plug 'tomtom/tcomment_vim' " Comment wrapper
 
 Plug 'm42e/vim-gcov-marker' " Code coverage marker
 
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
@@ -310,7 +313,7 @@ let g:LanguageClient_serverCommands = {
 "    \ 'javascript.jsx': ['javascript-typescript-stdio'],
 
 " Automatically start language servers.
-let g:LanguageClient_autoStart = 1
+let g:LanguageClient_autoStart = 0
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -335,10 +338,10 @@ Plug 'sbdchd/neoformat'
 "autocmd BufWritePre *.js Neoformat
 "autocmd BufWritePre *.jsx Neoformat
 "autocmd BufWritePre *.json Neoformat
-autocmd BufWritePre *.md Neoformat
-autocmd BufWritePre *.go Neoformat
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --no-semi\ --print-width=80\ --single-quote
-autocmd FileType javascript.jsx set formatprg=prettier\ --stdin\ --no-semi\ --print-width=80\ --single-quote
+"autocmd BufWritePre *.md Neoformat
+"autocmd BufWritePre *.go Neoformat
+autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd FileType javascript.jsx set formatprg=prettier\ --stdin
 autocmd FileType markdown set formatprg=prettier\ --stdin\ --parser=markdown
 autocmd FileType json set formatprg=prettier\ --stdin\ --parser=json
 autocmd FileType go set formatprg=goimports

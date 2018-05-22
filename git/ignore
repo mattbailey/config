@@ -5,6 +5,7 @@
 .AppleDouble
 .LSOverride
 .tern-port
+.vscode
 yarn-error.log
 npm-error.log
 

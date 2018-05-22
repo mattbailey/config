@@ -28,9 +28,9 @@ cd -
 #  || ${SRC}/fzf/install
 
 # Install termcap files
-for terminfo in ${DIR}/scripts/*.terminfo; do
-  tic $terminfo
-done
+#for terminfo in ${DIR}/scripts/*.terminfo; do
+#  tic $terminfo
+#done
 
 # Fill out cache dirs
 for dir in ${cacheDirs[@]}; do
