@@ -462,7 +462,7 @@ Plug 'tracyone/ctrlp-leader-guide'
 
 "Plug 'whatyouhide/vim-gotham'
 
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 "Plug 'zanglg/nova.vim'
 Plug 'ajmwagar/vim-deus'
