@@ -5,9 +5,6 @@ export PRIVATE="${HOME}/.private"
 # make less better
 export LESS="-F -X -R"
 
-# Source antigen
-source $(brew --prefix)/share/antigen/antigen.zsh
-
 # Set locale properly
 export LANG=en_US.UTF-8
 export LC_NUMERIC=$LANG
@@ -21,6 +18,7 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.linuxbrew/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/opt/go/libexec/bin:$PATH"
+#PATH="/usr/local/share/zsh/functions:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 PATH="/sbin:$PATH"
@@ -36,28 +34,64 @@ export PATH="$PATH:$PATH_START"
 # Load private zshenv
 [[ -f "${PRIVATE}/zshenv" ]] && source "${PRIVATE}/zshenv"
 
-# OH-MY-ZSH stuff
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-  git
-  git-extras
-  extract
-  brew
-  brew-cask
-  history
-  urltools
-  zsh-users/zsh-syntax-highlighting
-  kennethreitz/autoenv
+# Antibody https://getantibody.github.io/
+#   brew install terminal-notifier hub httpie
+source <(antibody init)
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
+antibody bundle "
+  robbyrussell/oh-my-zsh path:plugins/battery
+  robbyrussell/oh-my-zsh path:plugins/brew
+  robbyrussell/oh-my-zsh path:plugins/bgnotify
+  robbyrussell/oh-my-zsh path:plugins/catimg
+  robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+  robbyrussell/oh-my-zsh path:plugins/colorize
+  robbyrussell/oh-my-zsh path:plugins/copybuffer
+  robbyrussell/oh-my-zsh path:plugins/copydir
+  robbyrussell/oh-my-zsh path:plugins/copyfile
+  robbyrussell/oh-my-zsh path:plugins/docker
+  robbyrussell/oh-my-zsh path:plugins/docker-compose
+  robbyrussell/oh-my-zsh path:plugins/docker-machine
+  robbyrussell/oh-my-zsh path:plugins/dotenv
+  robbyrussell/oh-my-zsh path:plugins/emoji
+  robbyrussell/oh-my-zsh path:plugins/emoji-clock
+  robbyrussell/oh-my-zsh path:plugins/encode64
+  robbyrussell/oh-my-zsh path:plugins/emotty
+  robbyrussell/oh-my-zsh path:plugins/extract
+  robbyrussell/oh-my-zsh path:plugins/git-extras
+  robbyrussell/oh-my-zsh path:plugins/git
+  robbyrussell/oh-my-zsh path:plugins/gitfast
+  robbyrussell/oh-my-zsh path:plugins/github
+  robbyrussell/oh-my-zsh path:plugins/golang
+  robbyrussell/oh-my-zsh path:plugins/httpie
+  robbyrussell/oh-my-zsh path:plugins/kubectl
+  robbyrussell/oh-my-zsh path:plugins/minikube
+  robbyrussell/oh-my-zsh path:plugins/mvn
+  robbyrussell/oh-my-zsh path:plugins/nmap
+  robbyrussell/oh-my-zsh path:plugins/node
+  robbyrussell/oh-my-zsh path:plugins/npm
+  robbyrussell/oh-my-zsh path:plugins/npx
+  robbyrussell/oh-my-zsh path:plugins/osx
+  robbyrussell/oh-my-zsh path:plugins/pip
+  robbyrussell/oh-my-zsh path:plugins/python
+  robbyrussell/oh-my-zsh path:plugins/react-native
+  robbyrussell/oh-my-zsh path:plugins/redis-cli
+  robbyrussell/oh-my-zsh path:plugins/rust
+  robbyrussell/oh-my-zsh path:plugins/systemd
+  robbyrussell/oh-my-zsh path:plugins/tig
+  robbyrussell/oh-my-zsh path:plugins/vagrant
+  robbyrussell/oh-my-zsh path:plugins/vault
+  robbyrussell/oh-my-zsh path:plugins/yarn
+  robbyrussell/oh-my-zsh path:plugins/urltools
+  mafredri/zsh-async
+  rupa/z
   seebi/dircolors-solarized
   sindresorhus/pure
-  mafredri/zsh-async
-EOBUNDLES
-
-# My theme
-#antigen theme mattbailey/pure pure
-
-# End configuration.
-antigen apply
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+"
 
 # Set tabstops to 2 cols
 tabs -2
@@ -96,9 +130,11 @@ unset GPG_TTY
 
 # Dircolors
 hash gdircolors 2> /dev/null \
-  && eval `gdircolors ~/.antigen/bundles/seebi/dircolors-solarized/dircolors.256dark`
+  && eval `gdircolors "$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized/dircolors.256dark"`
 hash dircolors 2> /dev/null \
-  && eval `dircolors ~/.antigen/bundles/seebi/dircolors-solarized/dircolors.256dark`
+  && eval `dircolors "$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized/dircolors.256dark"`
+[ -f `which gls` ] && alias ls='gls --color=auto'
+
 
 fleetctl-switch(){
   export FLEETCTL_TUNNEL=$1:22
@@ -164,5 +200,12 @@ zstyle ':completion:*' rehash true
 # 10ms for key sequences
 #KEYTIMEOUT=1
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+#[[ -f /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+#[[ -f /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh

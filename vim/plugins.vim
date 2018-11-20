@@ -117,6 +117,11 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
 \   'go': ['gometalinter'],
+\   'python': ['flake8', 'pylint'],
+\}
+
+let g:ale_fixers = {
+\   'python': ['autopep8', 'yapf'],
 \}
 
 let g:ale_go_gometalinter_options = '-E staticcheck client.go'
@@ -274,27 +279,35 @@ Plug 'tomtom/tcomment_vim' " Comment wrapper
 
 Plug 'm42e/vim-gcov-marker' " Code coverage marker
 
+" A dependency of 'ncm2'.
+Plug 'roxma/nvim-yarp'
+
+" v2 of the nvim-completion-manager.
+Plug 'ncm2/ncm2'
+autocmd BufEnter  *  call ncm2#enable_for_buffer()
+
+" LanguageServer client for NeoVim.
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-  \]
-set completeopt=longest,menuone,preview
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'flow']
-let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs', 'flow']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#omni#functions.javascript = [
+"   \ 'tern#Complete',
+"   \ 'jspc#omni'
+"   \]
+" set completeopt=longest,menuone,preview
+" let g:deoplete#sources = {}
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs', 'flow']
+" let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs', 'flow']
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
 
 " Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
@@ -320,19 +333,19 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabClosePreviewOnPopupClose = 1
-autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#mappings#close_popup() . "\<CR>"
-endfunction
+" let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabClosePreviewOnPopupClose = 1
+" autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" 
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+" 
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function() abort
+"   return deoplete#mappings#close_popup() . "\<CR>"
+" endfunction
 
 Plug 'sbdchd/neoformat'
 "autocmd BufWritePre *.js Neoformat
@@ -345,6 +358,7 @@ autocmd FileType javascript.jsx set formatprg=prettier\ --stdin
 autocmd FileType markdown set formatprg=prettier\ --stdin\ --parser=markdown
 autocmd FileType json set formatprg=prettier\ --stdin\ --parser=json
 autocmd FileType go set formatprg=goimports
+autocmd FileType python set formatprg=yapf
 let g:neoformat_try_formatprg = 1
 
 " END BASE CODE
@@ -415,9 +429,9 @@ endfunction
 
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
-if g:flow_path != 'flow not found'
-  let g:deoplete#sources#flow#flow_bin = g:flow_path
-endif
+" if g:flow_path != 'flow not found'
+"   let g:deoplete#sources#flow#flow_bin = g:flow_path
+" endif
 
 Plug 'leshill/vim-json', { 'for': ['json'] }
 Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
