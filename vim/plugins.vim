@@ -124,7 +124,7 @@ let g:ale_fixers = {
 \   'python': ['autopep8', 'yapf'],
 \}
 
-let g:ale_go_gometalinter_options = '-E staticcheck client.go'
+let g:ale_go_gometalinter_options = '--fast'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
