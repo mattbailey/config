@@ -1,9 +1,20 @@
-configstore
-hub
+# Default ignore all
+*
+
+# Whitelist
+!dotfiles
+!git
+!iterm2
+!misc
+!nyaovim
+!scripts
+!vim
+!README.md
+!bootstrap
+!minboot
+!nvim
+!packages
+
+# ignore specific junk
 vim/plugged
-browser-launcher2
-fish/
-gtk-2.0/
-inkscape/
 vim/autoload/plug.vim.old
-yarn/
