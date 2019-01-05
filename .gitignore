@@ -1,12 +1,20 @@
+# Default ignore all
+*
+
 # Whitelist
 !.gitignore
 !dotfiles
+!dotfiles/**
 !git
+!git/**
 !iterm2
+!iterm2/**
 !misc
-!nyaovim
-!scripts/
+!misc/**
+!scripts
+!scripts/**
 !vim
+!vim/**
 !README.md
 !bootstrap
 !minboot
@@ -16,6 +24,4 @@
 # ignore specific junk
 vim/plugged
 vim/autoload/plug.vim.old
-
-# Default ignore all
-*
+vim/.netrwhist
