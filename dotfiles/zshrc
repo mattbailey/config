@@ -209,3 +209,4 @@ zstyle ':completion:*' rehash true
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 #[[ -f /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+export GHQ_ROOT=${HOME}/src
