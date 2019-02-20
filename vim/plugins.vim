@@ -116,7 +116,7 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
-\   'go': ['gometalinter'],
+\   'go': ['golangci-lint'],
 \   'python': ['flake8', 'pylint'],
 \}
 
@@ -124,7 +124,8 @@ let g:ale_fixers = {
 \   'python': ['autopep8', 'yapf'],
 \}
 
-let g:ale_go_gometalinter_options = '--fast'
+"let g:ale_go_gometalinter_options = '--disable-all --skip=pkg/proto/... -t -E golint -E vet -E vetshadow -E goconst -E gocyclo -E ineffassign -E gosec'
+let g:ale_go_golangci_lint_options = "--no-config --fast -D staticcheck -D typecheck"
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
