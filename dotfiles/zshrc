@@ -134,6 +134,8 @@ hash gdircolors 2> /dev/null \
 hash dircolors 2> /dev/null \
   && eval `dircolors "$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-seebi-SLASH-dircolors-solarized/dircolors.256dark"`
 [ -f /usr/local/bin/gls ] && alias ls='gls --color=auto'
+hash exa 2> /dev/null \
+  && alias ls=exa
 
 function install_jsctags {
   npm install jsctags

@@ -15,13 +15,14 @@
 !scripts/**
 !vim
 !vim/**
+!nvim
+!nvim/**
 !README.md
 !bootstrap
 !minboot
-!nvim
 !packages
 
 # ignore specific junk
-vim/plugged
-vim/autoload/plug.vim.old
-vim/.netrwhist
+nvim/plugged
+nvim/autoload/plug.vim.old
+nvim/.netrwhist
