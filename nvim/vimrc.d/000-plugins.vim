@@ -112,7 +112,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'Shougo/echodoc.vim'
 
 " prototool support
-Plug 'uber/prototool', { 'rtp':'vim/prototool', 'for': 'proto' }
+Plug 'mattbailey/prototool', { 'rtp':'vim/prototool', 'for': 'proto' }
 
 " ALE linting & formatting
 Plug 'w0rp/ale'

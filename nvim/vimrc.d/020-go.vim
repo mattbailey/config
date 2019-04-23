@@ -3,6 +3,7 @@ let g:go_fmt_command = "goimports"
 let g:go_async_run = 1
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
+let g:go_metalinter_command='golangci-lint'
 let g:go_list_height = 5
 " do not create an Hello World template
 let g:go_template_autocreate = 0
@@ -31,20 +32,22 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_variable_declarations = 0
+let g:go_highlight_variable_declarations = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_debug = 1
+let g:go_highlight_function_parameters = 1
 
 " look for gopath
 let g:go_autodetect_gopath = 1
 
 " display the variable type under the cursor
 let g:go_auto_type_info = 1
-let g:go_info_mode = 'gocode'
+let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'gopls'
 
 " Specifies whether `gocode` should add built-in types, functions and constants
 " to an autocompletion proposals.
