@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# usage: tlscheck host[:port]
+
+PORT=$(echo $@ | awk -F: '{print $NF}')
+HOST=$(echo $@ | sed -e 's%http.://%%' | cut -f1 -d:)
+
+# dumb hack for default 443
+if [[ "$PORT" = "$HOST" ]]; then
+  PORT=443
+fi
+
+echo | \
+  openssl s_client \
+  -showcerts \
+  -servername ${HOST} \
+  -connect ${HOST}:${PORT} \
+  2>/dev/null | \
+  openssl x509 -inform pem -noout -text
