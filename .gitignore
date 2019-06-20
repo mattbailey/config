@@ -21,6 +21,8 @@
 !bootstrap
 !minboot
 !packages
+!efm-langserver
+!efm-langserver/**
 
 # ignore specific junk
 nvim/plugged
