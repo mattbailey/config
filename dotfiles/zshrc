@@ -16,6 +16,8 @@ PATH="./node_modules/.bin"
 PATH="$HOME/.config/scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.linuxbrew/bin:$PATH"
+PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/opt/go/libexec/bin:$PATH"
 #PATH="/usr/local/share/zsh/functions:$PATH"
@@ -71,7 +73,6 @@ antibody bundle "
   robbyrussell/oh-my-zsh path:plugins/nmap
   robbyrussell/oh-my-zsh path:plugins/node
   robbyrussell/oh-my-zsh path:plugins/npm
-  robbyrussell/oh-my-zsh path:plugins/npx
   robbyrussell/oh-my-zsh path:plugins/osx
   robbyrussell/oh-my-zsh path:plugins/pip
   robbyrussell/oh-my-zsh path:plugins/python
