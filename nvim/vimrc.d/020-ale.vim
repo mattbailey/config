@@ -1,7 +1,7 @@
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
-\   'go': ['golangci-lint'],
+\   'go': ['gopls', 'golangci-lint'],
 \   'proto': ['prototool-lint'],
 \   'python': ['flake8', 'pylint'],
 \   'markdown': ['prettier', 'alex'],
@@ -9,6 +9,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['yapf', 'autopep8'],
 \   'javascript': ['prettier'],
 \   'javascript.jsx': ['prettier'],
@@ -18,6 +19,6 @@ let g:ale_fixers = {
 \}
 
 let g:ale_go_golangci_lint_options = "--no-config --fast -D staticcheck -D typecheck"
+let g:ale_go_golangci_lint_package = 1
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
-
