@@ -157,6 +157,7 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 zstyle ':completion:*' rehash true
 
 alias vim=nvim
+alias ag=rg
 
 #weather -z 99019 || exit 0
 
