@@ -43,6 +43,7 @@ ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SL
 antibody bundle robbyrussell/oh-my-zsh
 antibody bundle robbyrussell/oh-my-zsh folder:plugins/common-aliases
 antibody bundle "
+  robbyrussell/oh-my-zsh path:plugins/aws
   robbyrussell/oh-my-zsh path:plugins/battery
   robbyrussell/oh-my-zsh path:plugins/brew
   robbyrussell/oh-my-zsh path:plugins/bgnotify
@@ -118,6 +119,8 @@ alias https='http --default-scheme=https'
 
 # Go
 export GOPATH=${HOME}/go
+export CGO_ENABLED=0
+export GO111MODULE=on
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
