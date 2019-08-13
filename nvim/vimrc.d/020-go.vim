@@ -1,5 +1,3 @@
-let g:go_fmt_command = "goimports"
-
 let g:go_async_run = 1
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
@@ -132,5 +130,5 @@ augroup Golang
   au FileType go nnoremap <leader>gofs :GoFillStruct<CR>
   au FileType go nnoremap <leader>gofi :GoIfErr<CR>
 
-  " au BufWritePost *go :GoMetaLinter!
+  au BufWritePost *go :GoMetaLinter!
 augroup END

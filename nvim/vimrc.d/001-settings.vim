@@ -7,7 +7,7 @@ set autoread
 set background=dark
 set backspace=indent,eol,start
 set backup
-set backupdir=$HOME/.cache/vim
+set backupdir=$HOME/.cache/nvim/backup
 set breakindent
 set clipboard=unnamed
 set copyindent
@@ -46,7 +46,9 @@ set undofile
 set undolevels=1000
 set visualbell
 set wildignore=*.swp,*.bak
+set cmdheight=3
+set updatetime=300
+set shortmess+=c
 syntax on
-
 
 autocmd FileType make setlocal noexpandtab
