@@ -13,3 +13,9 @@ endif
 if !isdirectory(expand('$HOME/.cache/nvim/sessions'))
   call mkdir(expand('$HOME/.cache/nvim/sessions'))
 endif
+if !isdirectory(expand('$HOME/.cache/nvim/undo'))
+  call mkdir(expand('$HOME/.cache/nvim/undo'))
+endif
+if !isdirectory(expand('$HOME/.cache/nvim/backup'))
+  call mkdir(expand('$HOME/.cache/nvim/backup'))
+endif
