@@ -44,9 +44,9 @@ let g:go_highlight_function_parameters = 1
 let g:go_autodetect_gopath = 1
 
 " display the variable type under the cursor
-let g:go_auto_type_info = 1
-let g:go_info_mode = 'gopls'
-let g:go_def_mode = 'gopls'
+"let g:go_auto_type_info = 1
+"let g:go_info_mode = 'gopls'
+"let g:go_def_mode = 'gopls'
 
 " Specifies whether `gocode` should add built-in types, functions and constants
 " to an autocompletion proposals.

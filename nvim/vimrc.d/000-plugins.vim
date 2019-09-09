@@ -36,7 +36,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb', {'do': 'brew install hub'}
 
 " Like gitgutter, but extended and supports other SCM
-Plug 'mhinz/vim-signify' 
+Plug 'mhinz/vim-signify'
 
 " Easymotion
 " <Leader>f{char} to move to {char}
@@ -84,13 +84,13 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdcommenter'
 
 " Autocomplete brackets
-Plug 'Raimondi/delimitMate' 
+Plug 'Raimondi/delimitMate'
 
 " delimit autocomplete for other langs
 Plug 'tpope/vim-surround'
 
 " Unfold arguments/arrays/etc
-Plug 'FooSoft/vim-argwrap' 
+Plug 'FooSoft/vim-argwrap'
 
 " tons of language support plugins
 Plug 'sheerun/vim-polyglot', {'do': './build'}
@@ -129,7 +129,7 @@ Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html', 'javascript.jsx']}
 "let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 " Go
-Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
 "Plug 'jodosha/vim-godebug', {'for' : 'go', 'do': 'go get -u github.com/go-delve/delve/cmd/dlv'}
 
 " SYNTAX FORCE
