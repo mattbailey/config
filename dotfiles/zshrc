@@ -28,6 +28,7 @@ PATH="/usr/sbin:$PATH"
 PATH="/Developer/NVIDIA/CUDA-8.0/bin:$PATH"
 PATH="~/anaconda3/bin:$PATH"
 PATH="$PATH:$PATH_START"
+PATH="./vendor/.bin:$PATH"
 export PATH="$PATH:$PATH_START"
 
 # Pure config
@@ -89,7 +90,6 @@ antibody bundle "
   mafredri/zsh-async
   rupa/z
   seebi/dircolors-solarized
-  sindresorhus/pure
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
@@ -180,3 +180,5 @@ alias ag=rg
 # uninstall by removing these lines or running `tabtab uninstall sls`
 #[[ -f /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 export GHQ_ROOT=${HOME}/src
+
+eval "$(starship init zsh)"
