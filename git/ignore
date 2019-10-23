@@ -1,11 +1,9 @@
 # Editor junk
-.vim
 .vscode
 .tern-project
 .tern-port
 *~
 *.un~
-Session.vim
 .netrwhist
 
 # Tooling junk
