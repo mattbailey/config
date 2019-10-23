@@ -1,5 +1,5 @@
 " Use ripgrep to search
-map <c-f> <esc>:Rg ""<left>
+map <c-f> <esc>:Rg<CR>
 
 " Open nerdtree
 nmap \e :NERDTreeToggle<CR>
@@ -16,8 +16,11 @@ nmap <BS> :b#<CR>
 " open files via fzf
 map <c-d> <esc>:Files<cr>
 
+" open buffers via fzf
+map <c-b> <esc>:Buffers<cr>
+
 " complete line
-imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-l> <plug>(fzf-complete-line)
 
 " Wrap and unwrap arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>

@@ -46,7 +46,7 @@ Plug 'mhinz/vim-signify'
 Plug 'easymotion/vim-easymotion'
 
 " searching
-Plug 'jremmen/vim-ripgrep', { 'do': 'brew install ripgrep' }
+" Plug 'jremmen/vim-ripgrep', { 'do': 'brew install ripgrep' }
 
 " Github Dashboard
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
