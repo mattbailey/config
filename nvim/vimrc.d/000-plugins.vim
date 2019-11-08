@@ -132,6 +132,9 @@ Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html', 'javascript.jsx']}
 Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
 "Plug 'jodosha/vim-godebug', {'for' : 'go', 'do': 'go get -u github.com/go-delve/delve/cmd/dlv'}
 
+" plist
+Plug 'darfink/vim-plist'
+
 " SYNTAX FORCE
 " END SYNTAX FORCE
 
