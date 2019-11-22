@@ -1,0 +1,9 @@
+[git_status]
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+
+[directory]
+truncation_length = 2
+truncate_to_repo = false

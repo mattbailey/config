@@ -66,7 +66,6 @@ antibody bundle "
   robbyrussell/oh-my-zsh path:plugins/git-extras
   robbyrussell/oh-my-zsh path:plugins/git
   robbyrussell/oh-my-zsh path:plugins/gitfast
-  robbyrussell/oh-my-zsh path:plugins/github
   robbyrussell/oh-my-zsh path:plugins/golang
   robbyrussell/oh-my-zsh path:plugins/httpie
   robbyrussell/oh-my-zsh path:plugins/kubectl
@@ -101,7 +100,7 @@ tabs -2
 # History settings
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-export HISTSIZE=100000
+export HISTSIZE=1000000
 export SAVEHIST=$HISTSIZE
 
 # Default Editor
@@ -180,5 +179,12 @@ alias ag=rg
 # uninstall by removing these lines or running `tabtab uninstall sls`
 #[[ -f /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/mbailey/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
 export GHQ_ROOT=${HOME}/src
+
+[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
+
+iterm2_print_user_vars() {
+  iterm2_set_user_var epochTime $(date +%s)
+  iterm2_set_user_var bloop "heo"
+}
 
 eval "$(starship init zsh)"
