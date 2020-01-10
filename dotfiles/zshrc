@@ -141,6 +141,16 @@ hash dircolors 2> /dev/null \
 hash exa 2> /dev/null \
   && alias ls=exa
 
+# bat & bat-extras (requires bat) https://github.com/eth-p/bat-extras
+hash bat 2> /dev/null && \
+  alias cat=bat
+hash batgrep 2> /dev/null && \
+  alias rg=batgrep
+hash batman 2> /dev/null && \
+  alias man=batman
+hash batwatch 2> /dev/null && \
+  alias watch=batwatch
+
 function install_jsctags {
   npm install jsctags
   # https://github.com/mozilla/doctorjs/issues/52
@@ -189,3 +199,4 @@ iterm2_print_user_vars() {
 }
 
 eval "$(starship init zsh)"
+
