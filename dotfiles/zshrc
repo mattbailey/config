@@ -13,6 +13,7 @@ export LC_ALL=$LANG
 # Fixing PATH
 PATH_START=$PATH
 PATH="./node_modules/.bin"
+PATH="$PWD/.bin:$PATH"
 PATH="$HOME/.config/scripts:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.linuxbrew/bin:$PATH"
