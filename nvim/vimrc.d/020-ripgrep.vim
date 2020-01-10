@@ -2,14 +2,14 @@
 " ripgrep using normal vim grep
 " ==================================================
 
-" nnoremap g/ :grep!<space>
-" nnoremap g* :grep! -w <C-R><C-W><space>
-" nnoremap ga :grepadd!<space>
-"
-" if executable("rg")
-"     set grepprg=rg\ --vimgrep\ --no-heading\ -i
-"     set grepformat=%f:%l:%c:%m,%f:%l:%m
-" endif
+nnoremap g/ :grep!<space>
+nnoremap g* :grep! -w <C-R><C-W><space>
+nnoremap ga :grepadd!<space>
+
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ -i
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 "
 " augroup Grep
 "   autocmd!

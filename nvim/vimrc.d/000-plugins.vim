@@ -135,6 +135,12 @@ Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
 " plist
 Plug 'darfink/vim-plist'
 
+" auto context folding
+Plug 'wellle/context.vim'
+
+" strips whitespace on only lines that you modify
+Plug 'axelf4/vim-strip-trailing-whitespace'
+
 " SYNTAX FORCE
 " END SYNTAX FORCE
 

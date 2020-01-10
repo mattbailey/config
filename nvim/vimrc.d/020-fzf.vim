@@ -9,7 +9,11 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 if executable('rg')
-    let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case .', 1,
+        \   fzf#vim#with_preview(), <bang>0)
 endif
 
 let g:preview_width = float2nr(&columns * 0.7)
