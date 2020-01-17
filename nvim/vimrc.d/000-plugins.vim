@@ -92,9 +92,6 @@ Plug 'tpope/vim-surround'
 " Unfold arguments/arrays/etc
 Plug 'FooSoft/vim-argwrap'
 
-" tons of language support plugins
-Plug 'sheerun/vim-polyglot', {'do': './build'}
-
 " Markdown support
 Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 
@@ -140,6 +137,9 @@ Plug 'wellle/context.vim'
 
 " strips whitespace on only lines that you modify
 Plug 'axelf4/vim-strip-trailing-whitespace'
+
+" tons of language support plugins
+Plug 'sheerun/vim-polyglot'
 
 " SYNTAX FORCE
 " END SYNTAX FORCE
