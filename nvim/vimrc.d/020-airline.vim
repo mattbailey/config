@@ -1,7 +1,6 @@
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
-let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=0
 

@@ -26,7 +26,7 @@ set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set mouse=a
 set nocompatible
 set nocursorcolumn      " Don't paint cursor column
-set nocursorline        " Don't paint cursor line
+set cursorline        " Don't paint cursor line
 set noerrorbells
 set nostartofline
 set noswapfile
@@ -46,9 +46,20 @@ set undofile
 set undolevels=1000
 set visualbell
 set wildignore=*.swp,*.bak
-set cmdheight=3
+set noshowmode
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
+
+" don't give |ins-completion-menu| messages.
 set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
 syntax on
 
 autocmd FileType make setlocal noexpandtab

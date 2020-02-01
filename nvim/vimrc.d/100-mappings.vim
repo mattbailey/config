@@ -1,5 +1,8 @@
 " Use ripgrep to search
-map <c-f> <esc>:Rg<CR>
+"map <c-f> <esc>:Clap grep<CR>
+
+" Use clap to search (uses ripgrep)
+map <c-f> <esc>:Clap grep<CR>
 
 " Open nerdtree
 nmap \e :NERDTreeToggle<CR>
@@ -8,16 +11,22 @@ nmap \e :NERDTreeToggle<CR>
 nnoremap \u :UndotreeToggle<CR>
 
 " Open tagbar
-nmap \g :TagbarToggle<CR>
+"nmap \g :TagbarToggle<CR>
+
+" Open vista tags
+nmap \g :Clap tags<CR>
 
 " Open previous buffer
 nmap <BS> :b#<CR>
 
 " open files via fzf
-map <c-d> <esc>:Files<cr>
+"map <c-d> <esc>:Files<cr>
 
-" open buffers via fzf
-map <c-b> <esc>:Buffers<cr>
+" open files via clap
+map <c-d> <esc>:Clap files<cr>
+
+" open buffers via clap
+map <c-b> <esc>:Clap buffers<cr>
 
 " complete line
 imap <c-l> <plug>(fzf-complete-line)

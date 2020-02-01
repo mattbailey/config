@@ -10,6 +10,7 @@ endif
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'ajmwagar/vim-deus'
+Plug 'kaicataldo/material.vim'
 
 " hilight interesting words
 "   Highlight with <Leader>k
@@ -57,10 +58,6 @@ Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " Nerdtree git stuff
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " Undo tree
 Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 
@@ -71,7 +68,7 @@ Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
 
 " Tagbar
-Plug 'majutsushi/tagbar' " \g to open ctags tagbar
+" Plug 'majutsushi/tagbar' " \g to open ctags tagbar
 
 " Fuzzy searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -103,7 +100,7 @@ Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for' : 'markdown'}
 
 " language server implementation
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
@@ -133,13 +130,28 @@ Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
 Plug 'darfink/vim-plist'
 
 " auto context folding
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 
 " strips whitespace on only lines that you modify
 Plug 'axelf4/vim-strip-trailing-whitespace'
 
 " tons of language support plugins
 Plug 'sheerun/vim-polyglot'
+
+" Very good tag manager
+" brew install --with-jansson universal-ctags/universal-ctags/universal-ctags
+Plug 'liuchengxu/vista.vim'
+
+" Floating filer.
+" Should insatll: rg git fd vista.vim
+" The bang version will try to download the prebuilt binary if cargo does not exist.
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
+" statusline
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'liuchengxu/eleline.vim'
+Plug 'itchyny/lightline.vim'
 
 " SYNTAX FORCE
 " END SYNTAX FORCE

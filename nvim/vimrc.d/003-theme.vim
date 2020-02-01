@@ -1,4 +1,7 @@
-colorscheme gruvbox
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'palenight'
+colorscheme material
+
 let g:airline_theme='gruvbox'
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
@@ -13,7 +16,7 @@ hi javaScriptFunction cterm=italic gui=italic
 hi Comment cterm=italic gui=italic
 hi StorageClass cterm=italic gui=italic guifg=#d86e37
 
-hi NonText ctermfg=59 cterm=NONE guifg=#525563 gui=NONE 
+hi NonText ctermfg=59 cterm=NONE guifg=#525563 gui=NONE
 hi SpecialKey ctermfg=59 ctermbg=235 cterm=NONE guifg=#525563 guibg=#282a36 gui=NONE
 hi javascriptFuncKeyword ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
 hi Identifier ctermfg=117 ctermbg=NONE cterm=italic guifg=#8be9fd guibg=NONE gui=italic
