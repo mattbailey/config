@@ -1,0 +1,67 @@
+[color]
+  branch = auto
+  status = auto
+  ui = true
+[advice]
+  pushNonFastForward = false
+  statusHints = false
+[core]
+  whitespace = trailing-space,space-before-tab
+  edit = vim
+  editor = vim
+  excludesfile = ~/.config/git/ignore
+[diff]
+  renames = copies
+  mnemonicprefix = true
+  algorithm = patience
+[branch]
+  autosetupmerge = true
+[push]
+  default = tracking
+[rerere]
+  enabled = true
+[merge]
+  stat = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  st = status -sb
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  ready = rebase -i @{u}
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday --author matt.bailey@bethesda.net
+  purr = pull --rebase
+  assume   = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+  theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+  ctags = '!.git/hooks/ctags'
+  truncate = !sh -c "git checkout --orphan temp $1 && git commit -am 'Truncated history' && git rebase --onto temp $1 master && git branch -D temp"
+  slg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  dirdiff = diff -p --stat -w --no-index
+[rebase]
+  autosquash = true
+[init]
+  templatedir = ~/.config/misc/git_template
+[include]
+  path = ~/.private/gitconfig
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+[color]
+  ui = always
+[commit]
+  gpgsign = true
+[gpg]
+  program = gpg2
