@@ -1,3 +1,4 @@
+
 let g:lightline = {
       \ 'colorscheme': 'material_vim',
       \ 'mode_map': {
@@ -14,14 +15,17 @@ let g:lightline = {
         \ 't': 'T',
         \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename' ] ]
+      \   'left': [
+      \     [ 'mode', 'paste' ],
+      \     [ 'gitbranch', 'diagnostic', 'filename', 'method' ]
+      \   ],
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
       \   'filename': 'LightlineFilename',
+      \   'method': 'NearestMethodOrFunction',
       \ },
       \ }
 
@@ -30,6 +34,7 @@ function! LightlineFileformat()
   return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
+" For narrow windows
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction

@@ -12,11 +12,17 @@ Plug 'morhetz/gruvbox'
 Plug 'ajmwagar/vim-deus'
 Plug 'kaicataldo/material.vim'
 
+" statusline
+Plug 'itchyny/lightline.vim'
+
 " hilight interesting words
 "   Highlight with <Leader>k
 "   Navigate with n and N
 "   Clear highlights with <Leader>K
 Plug 'vasconcelloslf/vim-interestingwords'
+
+" Command sugar
+Plug 'tpope/vim-eunuch'
 
 " Stops less useful interruptions
 Plug 'vim-utils/vim-interruptless'
@@ -32,9 +38,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
-
-" GitHub integration
-Plug 'tpope/vim-rhubarb', {'do': 'brew install hub'}
 
 " Like gitgutter, but extended and supports other SCM
 Plug 'mhinz/vim-signify'
@@ -67,9 +70,6 @@ Plug 'wellle/targets.vim'
 " Make the yanked region apparent!
 Plug 'machakann/vim-highlightedyank'
 
-" Tagbar
-" Plug 'majutsushi/tagbar' " \g to open ctags tagbar
-
 " Fuzzy searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -99,9 +99,6 @@ Plug 'davinche/godown-vim', {'for': 'markdown'}
 Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for' : 'markdown'}
 
-" language server implementation
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
 
@@ -109,18 +106,16 @@ Plug 'Shougo/echodoc.vim'
 Plug 'mattbailey/prototool', { 'rtp':'vim/prototool', 'for': 'proto' }
 
 " ALE linting & formatting
-Plug 'w0rp/ale'
+" Commenting out for now, doesn't necissarily conflict with nvim-lsp, but
+"   will probably be superceded, as there is a vim.lsp.buf.formatting()
+"   function
+"Plug 'dense-analysis/ale'
 
 " blinky search
 Plug 'ivyl/vim-bling' " Adds blinking to search
 
-" color vars different colors
-Plug 'jaxbot/semantic-highlight.vim'
-
 " Javascript node dictionary
 Plug 'guileen/vim-node-dict', {'for': ['javascript', 'html', 'javascript.jsx']}
-
-"let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 " Go
 Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
@@ -137,6 +132,9 @@ Plug 'axelf4/vim-strip-trailing-whitespace'
 
 " tons of language support plugins
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = [
+      \ 'go',
+      \]
 
 " Very good tag manager
 " brew install --with-jansson universal-ctags/universal-ctags/universal-ctags
@@ -147,17 +145,15 @@ Plug 'liuchengxu/vista.vim'
 " The bang version will try to download the prebuilt binary if cargo does not exist.
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
-" statusline
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"Plug 'liuchengxu/eleline.vim'
-Plug 'itchyny/lightline.vim'
+" awww yissssss built in LSP support in neovim >=0.5.0
+Plug 'neovim/nvim-lsp'
 
-" SYNTAX FORCE
-" END SYNTAX FORCE
+" Tab completion, supports many sources, including omnicomplete, to work with
+"   nvim-lsp
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
 
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_map = '<c-x>'
-let g:ctrlp_cmd = 'CtrlP'
+" color vars different colors
+Plug 'jaxbot/semantic-highlight.vim'
 
 call plug#end()

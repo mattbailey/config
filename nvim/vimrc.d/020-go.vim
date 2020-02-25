@@ -1,11 +1,25 @@
+
+" We want to use neovim's built in LSP now.
+"   NOTE: this disables a lot of vim-go functionality, but the built-in LSP
+"   implementation is much faster.
+"
+"   All this stuff confliects with how we want to use neovim-lsp
+let g:go_gopls_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+
 let g:go_async_run = 1
 let g:go_fmt_command = 'goimports'
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_command='golangci-lint'
+let g:go_metalinter_command='golangci-lint --no-config --fast -D staticcheck -D typecheck'
 "let g:go_metalinter_autosave = 1
 let g:go_list_height = 5
 " do not create an Hello World template
 let g:go_template_autocreate = 0
+
+" use neovim's terminal for test runs, etc...
+let g:go_term_enabled = 1
 
 " show errors
 let g:go_fmt_fail_silently = 0
@@ -43,6 +57,7 @@ let g:go_highlight_function_parameters = 1
 " look for gopath
 let g:go_autodetect_gopath = 1
 
+
 " display the variable type under the cursor
 "let g:go_auto_type_info = 1
 "let g:go_info_mode = 'gopls'
@@ -50,11 +65,11 @@ let g:go_autodetect_gopath = 1
 
 " Specifies whether `gocode` should add built-in types, functions and constants
 " to an autocompletion proposals.
-let g:go_gocode_propose_builtins = 1
+let g:go_gocode_propose_builtins = 0
 " use binary packages for propose things
-let g:go_gocode_propose_source = 1
+let g:go_gocode_propose_source = 0
 " allow to have propose from un imported packages
-let g:go_gocode_unimported_packages = 1
+let g:go_gocode_unimported_packages = 0
 
 let g:go_snippet_engine = "automatic"
 
@@ -130,5 +145,5 @@ augroup Golang
   au FileType go nnoremap <leader>gofs :GoFillStruct<CR>
   au FileType go nnoremap <leader>gofi :GoIfErr<CR>
 
-  au BufWritePost *go :GoMetaLinter!
+  "au BufWritePost *go :GoMetaLinter!
 augroup END

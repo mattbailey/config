@@ -35,7 +35,7 @@ imap <c-l> <plug>(fzf-complete-line)
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " Colorpicker (only for mac)
-inoremap <C-C> <C-R>=system('color-picker')<CR>
+"inoremap <C-C> <C-R>=system('color-picker')<CR>
 
 " hex editor
 nnoremap <leader>b :%!xxd<CR>
@@ -79,3 +79,8 @@ vnoremap > >gv
 " Quickly select the text that was just pasted. This allows you to, e.g.,
 " indent it after pasting.
 noremap gV `[v`]
+
+" Tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
