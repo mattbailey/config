@@ -23,6 +23,10 @@
 !packages
 !efm-langserver
 !efm-langserver/**
+!tmux
+!tmux/**
+!fish
+!fish/**
 
 # ignore specific junk
 nvim/plugged

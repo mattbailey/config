@@ -1,6 +1,11 @@
+# NOTE: I no longer use zsh, I've swithed to fish, this won't be maintained
+
 # Set directory variables
 export SRC="${HOME}/.local/src"
 export PRIVATE="${HOME}/.private"
+
+# 10ms for key sequences
+export KEYTIMEOUT=1
 
 # make less better
 export LESS="-F -X -R"
