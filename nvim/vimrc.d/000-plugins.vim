@@ -90,6 +90,9 @@ Plug 'scrooloose/nerdcommenter'
 " Autocomplete brackets
 Plug 'Raimondi/delimitMate'
 
+" hilight occurances of element under cursor
+Plug 'RRethy/vim-illuminate'
+
 " delimit autocomplete for other langs
 Plug 'tpope/vim-surround'
 
