@@ -2,18 +2,18 @@
 
 function! LSPSetup()
 lua << EOF
-require'nvim_lsp'.gopls.setup{}
-require'nvim_lsp'.bashls.setup{}
-require'nvim_lsp'.clangd.setup{}
-require'nvim_lsp'.cssls.setup{}
-require'nvim_lsp'.dockerls.setup{}
-require'nvim_lsp'.jsonls.setup{}
-require'nvim_lsp'.pyls.setup{}
-require'nvim_lsp'.rust_analyzer.setup{}
-require'nvim_lsp'.sumneko_lua.setup{}
-require'nvim_lsp'.terraformls.setup{}
-require'nvim_lsp'.tsserver.setup{}
-require'nvim_lsp'.vimls.setup{}
+require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.cssls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.dockerls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.jsonls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.sumneko_lua.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.terraformls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.tsserver.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
 EOF
 endfunction
 

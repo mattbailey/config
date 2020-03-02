@@ -24,6 +24,13 @@ Plug 'vasconcelloslf/vim-interestingwords'
 " Command sugar
 Plug 'tpope/vim-eunuch'
 
+" :BUN :BD :BW, maintins splits
+Plug 'qpkorr/vim-bufkill'
+
+" nice window resizing
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+
 " Stops less useful interruptions
 Plug 'vim-utils/vim-interruptless'
 
@@ -147,6 +154,9 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " awww yissssss built in LSP support in neovim >=0.5.0
 Plug 'neovim/nvim-lsp'
+
+" Changes how diagnostics are visually shown for neovim-lsp
+Plug 'haorenW1025/diagnostic-nvim'
 
 " Tab completion, supports many sources, including omnicomplete, to work with
 "   nvim-lsp
