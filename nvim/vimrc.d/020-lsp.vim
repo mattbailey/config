@@ -2,18 +2,19 @@
 
 function! LSPSetup()
 lua << EOF
-require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.cssls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.dockerls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.jsonls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.rust_analyzer.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.sumneko_lua.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.terraformls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.tsserver.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.gopls.setup{
+	cmd = { "gopls", "-logfile", "/Users/matt.bailey/gopls.log" };
+};
+require'nvim_lsp'.bashls.setup{};
+require'nvim_lsp'.clangd.setup{};
+require'nvim_lsp'.cssls.setup{};
+require'nvim_lsp'.dockerls.setup{};
+require'nvim_lsp'.jsonls.setup{};
+require'nvim_lsp'.pyls.setup{};
+require'nvim_lsp'.rust_analyzer.setup{};
+require'nvim_lsp'.sumneko_lua.setup{};
+require'nvim_lsp'.terraformls.setup{};
+require'nvim_lsp'.tsserver.setup{};
 EOF
 endfunction
 
@@ -29,7 +30,6 @@ function! LSPUpdate()
   LspInstall sumneko_lua
   LspInstall terraformls
   LspInstall tsserver
-  LspInstall vimls
 endfunction
 
 call LSPSetup()
@@ -70,3 +70,11 @@ nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gF    <cmd>lua vim.lsp.buf.formatting()<CR>
+
+function! LSPHover()
+lua << EOF
+local util = require 'vim.lsp.util'
+local params = util.make_position_params()
+vim.lsp.buf.hover()
+EOF
+endfunction

@@ -77,7 +77,9 @@ set formatoptions+=j
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " near instant switch to normal mode, NOTE: means esc can't be used for sequences.
-set timeoutlen=10 ttimeoutlen=0
+" this actually ended up being an iterm2 issue, if you enable this, things
+" like \e don't work.
+"set timeoutlen=10 ttimeoutlen=0
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''

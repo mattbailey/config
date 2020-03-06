@@ -19,6 +19,7 @@ end
 set -x GOPATH $HOME/go
 set -x CGO_ENABLED 0
 set -x GO111MODULE on
+set -x GOPRIVATE github.com/BethesdaNet
 
 # bat, cat replacement
 # https://github.com/eth-p/bat-extras
@@ -38,5 +39,18 @@ end
 
 # GHQ repo manager
 set -x GHQ_ROOT $HOME/src
+
+# History sync
+function sync_history --on-event fish_preexec
+  history --save
+  history --merge
+end
+
+# Package management
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
 
 starship init fish | source

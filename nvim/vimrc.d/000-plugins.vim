@@ -28,7 +28,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'qpkorr/vim-bufkill'
 
 " nice window resizing
-Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 
 " Stops less useful interruptions
@@ -159,7 +158,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 Plug 'neovim/nvim-lsp'
 
 " Changes how diagnostics are visually shown for neovim-lsp
-Plug 'haorenW1025/diagnostic-nvim'
+"Plug 'haorenW1025/diagnostic-nvim'
 
 " Tab completion, supports many sources, including omnicomplete, to work with
 "   nvim-lsp
@@ -168,5 +167,8 @@ Plug 'yami-beta/asyncomplete-omni.vim'
 
 " color vars different colors
 Plug 'jaxbot/semantic-highlight.vim'
+
+" So SQLComplete works
+Plug 'vim-scripts/dbext.vim'
 
 call plug#end()

@@ -57,6 +57,9 @@ let g:go_highlight_function_parameters = 1
 " look for gopath
 let g:go_autodetect_gopath = 1
 
+" show type info
+"let g:go_auto_type_info = 1
+
 
 " display the variable type under the cursor
 "let g:go_auto_type_info = 1
