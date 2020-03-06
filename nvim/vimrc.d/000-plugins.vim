@@ -30,6 +30,9 @@ Plug 'qpkorr/vim-bufkill'
 " nice window resizing
 Plug 'camspiers/lens.vim'
 
+" Fast f & t motions
+Plug 'unblevable/quick-scope'
+
 " Stops less useful interruptions
 Plug 'vim-utils/vim-interruptless'
 
