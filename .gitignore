@@ -27,6 +27,7 @@
 !tmux/**
 !fish
 !fish/**
+!ripgrep
 
 # ignore specific junk
 nvim/plugged

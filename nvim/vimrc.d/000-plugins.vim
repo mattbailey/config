@@ -24,6 +24,9 @@ Plug 'vasconcelloslf/vim-interestingwords'
 " Command sugar
 Plug 'tpope/vim-eunuch'
 
+" Hilights containing paren pairs
+Plug 'Yggdroot/hiPairs'
+
 " :BUN :BD :BW, maintins splits
 Plug 'qpkorr/vim-bufkill'
 
@@ -163,10 +166,16 @@ Plug 'neovim/nvim-lsp'
 " Changes how diagnostics are visually shown for neovim-lsp
 "Plug 'haorenW1025/diagnostic-nvim'
 
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Tab completion, supports many sources, including omnicomplete, to work with
 "   nvim-lsp
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'haorenW1025/completion-nvim'
+
 
 " color vars different colors
 Plug 'jaxbot/semantic-highlight.vim'

@@ -2,9 +2,7 @@
 
 function! LSPSetup()
 lua << EOF
-require'nvim_lsp'.gopls.setup{
-	cmd = { "gopls", "-logfile", "/Users/matt.bailey/gopls.log" };
-};
+require'nvim_lsp'.gopls.setup{on_attach=require'completion'.on_attach};
 require'nvim_lsp'.bashls.setup{};
 require'nvim_lsp'.clangd.setup{};
 require'nvim_lsp'.cssls.setup{};
@@ -77,4 +75,10 @@ local util = require 'vim.lsp.util'
 local params = util.make_position_params()
 vim.lsp.buf.hover()
 EOF
+endfunction
+
+function! LSPRename()
+	let s:newName = input('Enter new name: ', expand('<cword>'))
+	echom "s:newName = " . s:newName
+	lua vim.lsp.buf.rename(s:newName)
 endfunction

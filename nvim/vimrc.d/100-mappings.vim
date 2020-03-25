@@ -3,6 +3,7 @@
 
 " Use clap to search (uses ripgrep)
 map <c-f> <esc>:Clap grep<CR>
+nnoremap <silent> g# :Clap grep ++query=<cword> <CR>
 
 " Open nerdtree
 nmap \e :NERDTreeToggle<CR>
@@ -80,7 +81,13 @@ vnoremap > >gv
 " indent it after pasting.
 noremap gV `[v`]
 
-" Tab completion
+" Use <Tab> and <S-Tab> to navigate through popup menu
+" inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+" Auto close popup menu when finish completion
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect

@@ -10,11 +10,11 @@ let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
 
 let g:go_async_run = 1
-let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'golangci-lint run --no-config --disable-all -E gofmt -E goimports -E misspell -E whitespace'
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_command='golangci-lint --no-config --fast -D staticcheck -D typecheck'
-"let g:go_metalinter_autosave = 1
-let g:go_list_height = 5
+let g:go_metalinter_command='golangci-lint run --no-config --fix --fast'
+let g:go_metalinter_autosave = 1
+let g:go_list_height = 8
 " do not create an Hello World template
 let g:go_template_autocreate = 0
 

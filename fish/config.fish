@@ -2,6 +2,7 @@
 set -x PATH $HOME/.config/scripts $PATH
 set -x PATH $HOME/go/bin $PATH
 set -x PATH /usr/local/opt/go/libexec/bin $PATH
+set -x PATH ./.bin $PATH
 
 # set -xting EDITOR
 if type -q vi
@@ -20,6 +21,9 @@ set -x GOPATH $HOME/go
 set -x CGO_ENABLED 0
 set -x GO111MODULE on
 set -x GOPRIVATE github.com/BethesdaNet
+
+# ripgrep global config
+set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
 
 # bat, cat replacement
 # https://github.com/eth-p/bat-extras
