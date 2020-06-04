@@ -65,3 +65,11 @@
   gpgsign = true
 [gpg]
   program = gpg2
+[submodule]
+	recurse = true
+  fetchJobs = 0
+[fetch]
+  parallel = 0
+  recurseSubmodules = true
+[pull]
+	rebase = true

@@ -2,7 +2,9 @@
 set -x PATH $HOME/.config/scripts $PATH
 set -x PATH $HOME/go/bin $PATH
 set -x PATH /usr/local/opt/go/libexec/bin $PATH
+set -x PATH /usr/local/opt/make/libexec/gnubin $PATH
 set -x PATH ./.bin $PATH
+set -x PATH $HOME/.cargo/bin $PATH
 
 # set -xting EDITOR
 if type -q vi
@@ -14,6 +16,8 @@ end
 if type -q nvim
   set -x EDITOR nvim
   alias vim nvim
+else
+  echo missing: neovim
 end
 
 # Go
@@ -25,11 +29,25 @@ set -x GOPRIVATE github.com/BethesdaNet
 # ripgrep global config
 set -x RIPGREP_CONFIG_PATH $HOME/.config/ripgrep
 
+# FZF optimizations
+if type -q fzf
+  if type -q fd
+    set -x FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git"
+    set -x FZF_CTRL_T_COMMAND "command $FZF_DEFAULT_COMMAND \$dir 2> /dev/null | sed '1d; s#^\./##'"
+  else
+    echo missing: fd
+  end
+else
+  echo missing: fzf
+end
+
 # bat, cat replacement
 # https://github.com/eth-p/bat-extras
 if type -q bat
   alias cat bat
   set -x PAGER bat
+else
+  echo missing: bat
 end
 if type -q batgrep
   alias rg batgrep
@@ -57,4 +75,29 @@ if not functions -q fisher
     fish -c fisher
 end
 
+# pip3 install neovim-remote
+# https://github.com/caenrique/nvim-toggle-terminal
+# if type -q nvr
+#   set -x NVIM_LISTEN_ADDRESS /tmp/nvimsocket
+#   function nvim_wrapper
+#     if not set -q NVIM_LISTEN_ADDRESS
+#       nvim $argv
+#     else
+#       if set -q argv
+#         nvr -s -l $argv
+#       else
+#         nvr -s -l -c new
+#       end
+#     end
+#   end
+#   alias vim nvim_wrapper
+#   alias nvim nvim_wrapper
+# end
+
+# Load shell secrets from secure source
+if test -f $HOME/.private/fish/secrets.fish
+  source $HOME/.private/fish/secrets.fish
+end
+
 starship init fish | source
+set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths

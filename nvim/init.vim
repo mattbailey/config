@@ -1,5 +1,8 @@
 " Partly, from https://github.com/ik5/dotvim
 
+lua require 'tagfunc_nvim_lsp'
+set tagfunc=v:lua.tagfunc_nvim_lsp
+
 " Auto install vim plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   echo "Installing Plug"

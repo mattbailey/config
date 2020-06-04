@@ -1,4 +1,12 @@
 
+let g:indicator_checking = " \uf110"
+let g:indicator_warnings = " \uf071"
+let g:indicator_errors = " \uf05e"
+let g:indicator_ok = " \uf00c"
+let g:indicator_info = ' 🛈 '
+let g:indicator_hint = '❗'
+let g:spinner_frames = ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']
+
 let g:lightline = {
 			\ 'colorscheme': 'material_vim',
 			\ 'mode_map': {
@@ -17,7 +25,7 @@ let g:lightline = {
 			\ 'active': {
 			\   'left': [
 			\     [ 'mode', 'paste' ],
-			\     [ 'gitbranch', 'diagnostic', 'filename', 'method' ]
+			\     [ 'gitbranch', 'diagnostic', 'filename', 'method', 'status' ]
 			\   ],
 			\ },
 			\ 'component_function': {
@@ -26,6 +34,7 @@ let g:lightline = {
 			\   'filetype': 'LightlineFiletype',
 			\   'filename': 'LightlineFilename',
 			\   'method': 'NearestMethodOrFunction',
+			\   'status': 'LSPStatus',
 			\ },
 			\ }
 
@@ -56,4 +65,8 @@ function! LightlineFilename()
 	let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 	let modified = &modified ? ' +' : ''
 	return filename . modified
+endfunction
+
+function! LSPStatus() abort
+  return luaeval("require('statusline').lsp()")
 endfunction

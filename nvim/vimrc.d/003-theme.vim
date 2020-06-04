@@ -31,7 +31,7 @@ hi javascriptFuncKeyword cterm=italic gui=italic
 hi javaScriptFunction cterm=italic gui=italic
 
 " Make Columns stand out
-highlight ColorColumn ctermbg=200
+highlight ColorColumn term=reverse ctermbg=200 guibg=#293c43
 call matchadd('ColorColumn', '\%101v', 100)
 set fillchars=vert:┃,fold:━
 highlight VertSplit cterm=none ctermbg=none ctermfg=247

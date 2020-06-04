@@ -51,6 +51,7 @@ set undolevels=1000
 set visualbell
 set wildignore=*.swp,*.bak
 set noshowmode
+set autowriteall
 
 " Don't incr octals
 set nrformats-=octal

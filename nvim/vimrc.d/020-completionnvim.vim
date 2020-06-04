@@ -1,5 +1,6 @@
 let g:completion_enable_in_comment = 1
 let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_fuzzy_match = 1
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

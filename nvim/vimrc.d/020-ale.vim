@@ -5,7 +5,8 @@ let g:ale_linters = {
 \   'proto': ['prototool-lint'],
 \   'python': ['flake8', 'pylint'],
 \   'markdown': ['prettier', 'alex'],
-\   'json': ['prettier']
+\   'json': ['prettier'],
+\   'yaml': ['cloudformation'],
 \}
 
 let g:ale_fixers = {
@@ -15,7 +16,8 @@ let g:ale_fixers = {
 \   'javascript.jsx': ['prettier'],
 \   'markdown': ['prettier'],
 \   'go': ['goimports'],
-\   'json': ['prettier']
+\   'json': ['prettier'],
+\   'yaml': ['cloudformation'],
 \}
 
 let g:ale_go_golangci_lint_options = "--no-config --fast -D staticcheck -D typecheck"

@@ -21,6 +21,14 @@ Plug 'itchyny/lightline.vim'
 "   Clear highlights with <Leader>K
 Plug 'vasconcelloslf/vim-interestingwords'
 
+" last place in file
+Plug 'farmergreg/vim-lastplace'
+
+" cleans up search hilights
+Plug 'romainl/vim-cool'
+
+Plug 'duggiefresh/vim-easydir'       | " Create files in dirs that don't exist
+
 " Command sugar
 Plug 'tpope/vim-eunuch'
 
@@ -42,6 +50,14 @@ Plug 'vim-utils/vim-interruptless'
 " File type icons
 Plug 'ryanoasis/vim-devicons'
 
+" Indentation indicators
+Plug 'nathanaelkane/vim-indent-guides'
+
+Plug 'blueyed/vim-diminactive'         | " Helps identifying active window
+
+Plug 'haorenW1025/floatLf-nvim'
+let g:floatLf_autoclose = 1
+
 " Colorizes various color-codes in vim
 Plug 'chrisbra/Colorizer'
 
@@ -50,6 +66,9 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Git integration
 Plug 'tpope/vim-fugitive'
+
+" Git linking
+Plug 'ruanyl/vim-gh-line'
 
 " Like gitgutter, but extended and supports other SCM
 Plug 'mhinz/vim-signify'
@@ -111,14 +130,14 @@ Plug 'tpope/vim-markdown', {'for' : 'markdown'}
 Plug 'davinche/godown-vim', {'for': 'markdown'}
 
 " Pandoc converter support
-Plug 'vim-pandoc/vim-pandoc', {'for' : 'markdown'}
-Plug 'vim-pandoc/vim-pandoc-syntax', {'for' : 'markdown'}
+Plug 'vim-pandoc/vim-pandoc', {'for' : ['markdown','pandoc']}
+Plug 'vim-pandoc/vim-pandoc-syntax', {'for' : ['markdown','pandoc']}
 
 " Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
 
 " prototool support
-Plug 'mattbailey/prototool', { 'rtp':'vim/prototool', 'for': 'proto' }
+"Plug 'mattbailey/prototool', { 'rtp':'vim/prototool', 'for': 'proto' }
 
 " ALE linting & formatting
 " Commenting out for now, doesn't necissarily conflict with nvim-lsp, but
@@ -160,22 +179,24 @@ Plug 'liuchengxu/vista.vim'
 " The bang version will try to download the prebuilt binary if cargo does not exist.
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
+" file encryption
+Plug 'hauleth/vim-encpipe'
+
 " awww yissssss built in LSP support in neovim >=0.5.0
 Plug 'neovim/nvim-lsp'
 
-" Changes how diagnostics are visually shown for neovim-lsp
-"Plug 'haorenW1025/diagnostic-nvim'
+" statusline lsp
+Plug 'wbthomason/lsp-status.nvim'
 
 " snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" Tab completion, supports many sources, including omnicomplete, to work with
-"   nvim-lsp
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'yami-beta/asyncomplete-omni.vim'
+" LSP completion
 Plug 'haorenW1025/completion-nvim'
 
+" Changes how diagnostics are visually shown for neovim-lsp
+Plug 'haorenW1025/diagnostic-nvim'
 
 " color vars different colors
 Plug 'jaxbot/semantic-highlight.vim'

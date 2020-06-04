@@ -91,3 +91,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
+
+" for nvim-toggle-terminal
+nnoremap <silent> <C-z> :call nvim_toggle_terminal#ToggleTerminal()<Enter>
+tnoremap <silent> <C-z> <C-\><C-n>:call nvim_toggle_terminal#ToggleTerminal()<Enter>
+tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"

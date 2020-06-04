@@ -69,3 +69,18 @@ function! FloatTerm(...)
   " Close border window when terminal window close
   autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
 endfunction
+
+" WSL compatible clipboard
+" TODO: conditonally load for windows
+" let g:clipboard = {
+" 			\   'name': 'WslClipboard',
+" 			\   'copy': {
+" 			\      '+': 'clip.exe',
+" 			\      '*': 'clip.exe',
+" 			\    },
+" 			\   'paste': {
+" 			\      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+" 			\      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+" 			\   },
+" 			\   'cache_enabled': 0,
+" 			\ }
