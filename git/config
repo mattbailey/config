@@ -66,10 +66,10 @@
 [gpg]
   program = gpg2
 [submodule]
-	recurse = true
-  fetchJobs = 0
+	recurse = false
+  fetchJobs = 1
 [fetch]
-  parallel = 0
+  parallel = 1
   recurseSubmodules = true
 [pull]
 	rebase = true
