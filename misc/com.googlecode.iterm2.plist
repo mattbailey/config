@@ -1112,6 +1112,8 @@
 	<string>~/.config/misc</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{799, 448}</string>
+	<key>NSOverlayScrollersFallBackForAccessoryViews</key>
+	<false/>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -1162,15 +1164,15 @@
 	<key>NSWindow Frame ProfilesPanel</key>
 	<string>3651 1476 735 382 3372 -951 1692 3008 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>2218 1157 616 174 1680 -951 1692 3008 </string>
+	<string>2218 846 616 174 1680 -1262 1692 3008 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>2326 1208 400 129 1680 -951 1692 2985 </string>
+	<string>2326 880 400 129 1680 -1262 1692 2985 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1680 -951 1692 3008 1680 -951 1692 3008 </string>
+	<string>1680 -1262 1692 3008 1680 -1262 1692 2985 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1894 -649 730 563 1680 -951 1692 2985 </string>
+	<string>3372 1471 730 563 3372 -951 1692 2985 </string>
 	<key>NeverWarnAboutShortLivedSessions_80B5D8BE-A8BB-4C07-B815-4F51D41AB81D</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_80B5D8BE-A8BB-4C07-B815-4F51D41AB81D_selection</key>
@@ -1407,7 +1409,7 @@
 				<real>1</real>
 			</dict>
 			<key>BM Growl</key>
-			<false/>
+			<true/>
 			<key>Background Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1820,6 +1822,8 @@
 			<real>0.076380076142131978</real>
 			<key>Unicode Normalization</key>
 			<integer>0</integer>
+			<key>Unicode Version</key>
+			<integer>8</integer>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -4141,17 +4145,28 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.6</string>
-		<string>3.3.7beta4</string>
-		<string>3.3.10beta3</string>
-		<string>3.3.8beta5</string>
-		<string>3.3.9beta1</string>
-		<string>3.3.8beta4</string>
-		<string>3.3.10beta2</string>
+		<string>3.4.0beta5</string>
+		<string>3.3.12beta3</string>
+		<string>3.3.12beta2</string>
+		<string>3.3.12beta1</string>
 		<string>3.3.8beta3</string>
+		<string>3.3.10beta4</string>
+		<string>3.3.8beta5</string>
+		<string>3.3.10beta2</string>
+		<string>3.3.10beta3</string>
 		<string>3.3.8beta2</string>
+		<string>3.3.8beta4</string>
+		<string>3.3.6</string>
+		<string>3.3.9beta1</string>
 		<string>3.3.10beta1</string>
+		<string>3.3.11beta1</string>
+		<string>3.3.7beta4</string>
 		<string>3.3.8beta1</string>
+		<string>3.4.0beta6</string>
+		<string>3.4.0beta1</string>
+		<string>3.4.0beta2</string>
+		<string>3.4.0beta4</string>
+		<string>3.4.0beta3</string>
 	</array>
 	<key>NoSyncBFPFavorites</key>
 	<array>
@@ -4166,18 +4181,24 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{1680, -951}, {1692, 3008}}</string>
+		<string>{{3372, -1262}, {1692, 3008}}</string>
 		<key>topLeft</key>
-		<string>{2221, 961}</string>
+		<string>{3423, 681}</string>
 	</dict>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
+	<key>NoSyncIgnoreSystemWindowRestoration</key>
+	<true/>
 	<key>NoSyncInstallUtilitiesPackage</key>
 	<true/>
 	<key>NoSyncInstallUtilitiesPackage_selection</key>
 	<integer>0</integer>
 	<key>NoSyncInstallationId</key>
 	<string>DD955504-5BE6-4909-98D7-D5560E59CCCA</string>
+	<key>NoSyncLastOSVersion</key>
+	<string>Version 10.15.6 (Build 19G2021)</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>57</integer>
+	<integer>80</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -4295,6 +4316,22 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>selectionLength</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>processTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -4306,6 +4343,14 @@
 				<string>triggerName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<false/>
+				<key>name</key>
+				<string>parentSession</string>
+				<key>nonterminalContext</key>
+				<integer>1</integer>
 			</dict>
 			<dict>
 				<key>isTerminal</key>
@@ -4432,6 +4477,14 @@
 				<true/>
 				<key>name</key>
 				<string>tmuxStatusLeft</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>selection</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4594,6 +4647,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentTab.currentSession.processTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -4709,7 +4770,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalWindowName</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4717,7 +4778,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.user.epochTime</string>
+				<string>tmuxWindow</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4837,6 +4898,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentSession.processTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>id</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -4867,11 +4936,27 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentSession.user.epochTime</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
 				<false/>
 				<key>name</key>
 				<string>iterm2</string>
 				<key>nonterminalContext</key>
 				<integer>4</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentSession.terminalWindowName</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
 			</dict>
 			<dict>
 				<key>isTerminal</key>
@@ -4894,22 +4979,6 @@
 				<true/>
 				<key>name</key>
 				<string>currentSession.path</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.pid</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>tmuxWindow</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4958,6 +5027,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>NoSyncRestoreWindowsCount</key>
+	<integer>0</integer>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>594953046.98874104</real>
 	<key>OpenBookmark</key>
@@ -5012,11 +5083,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing_new.xml?shard=22</string>
+	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=22</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-23T15:07:29Z</date>
+	<date>2020-09-17T00:09:53Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -5062,7 +5133,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.10beta3</string>
+	<string>3.4.0beta6</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>1</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
