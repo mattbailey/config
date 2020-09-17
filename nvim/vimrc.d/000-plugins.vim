@@ -8,8 +8,8 @@ else
 endif
 
 " Colorschemes
-Plug 'morhetz/gruvbox'
-Plug 'ajmwagar/vim-deus'
+" Plug 'morhetz/gruvbox'
+" Plug 'ajmwagar/vim-deus'
 Plug 'kaicataldo/material.vim'
 
 " statusline

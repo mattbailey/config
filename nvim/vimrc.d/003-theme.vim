@@ -11,7 +11,7 @@ let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
 colorscheme material
 
-set background=dark
+" set background=dark
 
 " Italic Modifiers
 hi Special cterm=italic gui=italic
