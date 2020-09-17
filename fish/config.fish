@@ -55,9 +55,9 @@ end
 if type -q batman
   alias man batman
 end
-if type -q batwatch
-  alias watch batwatch
-end
+# if type -q batwatch
+#   alias watch batwatch
+# end
 
 # GHQ repo manager
 set -x GHQ_ROOT $HOME/src
