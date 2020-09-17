@@ -28,8 +28,8 @@ set list
 set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set mouse=a
 set nocompatible
-set nocursorcolumn      " Don't paint cursor column
-set cursorline        " Don't paint cursor line
+set cursorcolumn      " paint cursor column
+set cursorline        " paint cursor line
 set noerrorbells
 set nostartofline
 set noswapfile
