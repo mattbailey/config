@@ -1,3 +1,4 @@
+set -x LANG en_US.UTF-8
 
 set -x PATH $HOME/.config/scripts $PATH
 set -x PATH $HOME/go/bin $PATH
