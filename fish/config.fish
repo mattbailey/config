@@ -5,6 +5,7 @@ set -x PATH /usr/local/opt/go/libexec/bin $PATH
 set -x PATH /usr/local/opt/make/libexec/gnubin $PATH
 set -x PATH ./.bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
+set -x PATH (ruby -r rubygems -e 'puts Gem.user_dir')/bin $PATH
 
 # set -xting EDITOR
 if type -q vi
