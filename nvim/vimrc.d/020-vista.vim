@@ -28,7 +28,7 @@ let g:vista#renderer#enable_icon = 1
 " Note: because nvim-lsp (and other lsp plugins) load lazily, this doesn't
 " always work immediately, but will always catch up if you have more than one
 " file open.
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " For statusline
 function! NearestMethodOrFunction() abort

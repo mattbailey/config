@@ -8,19 +8,30 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-  command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case .', 1,
-        \   fzf#vim#with_preview(), <bang>0)
+" if executable('rg')
+"   let $FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden --color=never'
+"   command! -bang -nargs=* Rg
+"         \ call fzf#vim#grep(
+"         \   'rg --with-filename --column --line-number --no-heading --color=always --smart-case .', 1,
+"         \   fzf#vim#with_preview(), <bang>0)
+" endif
+
+if executable('fd')
+	let $FZF_DEFAULT_COMMAND='fd --type f --hidden --no-ignore --follow --exclude .git'
 endif
 
 let g:preview_width = float2nr(&columns * 0.7)
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 let g:fzf_buffers_jump = 1
 
-let $FZF_DEFAULT_OPTS=" --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4 --preview 'if file -i {}|grep -q binary; then file -b {}; else bat --style=changes --color always --line-range :40 {}; fi' --preview-window right:" . g:preview_width
+" let $FZF_DEFAULT_OPTS=" --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4 --preview 'if file -i {}|grep -q binary; then file -b {}; else bat --style=changes --color always --line-range :40 {}; fi' --preview-window right:" . g:preview_width
+let $FZF_DEFAULT_OPTS=" --color=dark
+			\ --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1
+			\ --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1
+			\ --layout=reverse
+			\ --margin=1,4
+			\ --preview='bat --style=changes --color=always --paging=never --italic-text=always --theme=TwoDark --line-range=:50 {}'
+			\ --preview-window=right:50%"
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)

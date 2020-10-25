@@ -87,7 +87,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-github-dashboard', {'on': ['GHDashboard', 'GHActivity'] }
 
 " Nerdtree
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+" Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
 " Nerdtree git stuff
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -158,6 +158,12 @@ Plug 'fatih/vim-go', {'do': ':silent :GoUpdateBinaries'}
 " plist
 Plug 'darfink/vim-plist'
 
+" file manager
+Plug 'vifm/vifm.vim'
+
+" quickfix settings
+Plug 'romainl/vim-qf'
+
 " auto context folding
 " Plug 'wellle/context.vim'
 
@@ -172,12 +178,15 @@ let g:polyglot_disabled = [
 
 " Very good tag manager
 " brew install --with-jansson universal-ctags/universal-ctags/universal-ctags
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 
 " Floating filer.
 " Should insatll: rg git fd vista.vim
 " The bang version will try to download the prebuilt binary if cargo does not exist.
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
+" newer floating term/window with plugins.
+Plug 'voldikss/vim-floaterm'
 
 " file encryption
 Plug 'hauleth/vim-encpipe'

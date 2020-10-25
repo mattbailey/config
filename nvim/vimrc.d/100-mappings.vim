@@ -6,7 +6,8 @@ map <c-f> <esc>:Clap grep<CR>
 nnoremap <silent> g# :Clap grep ++query=<cword> <CR>
 
 " Open nerdtree
-nmap \e :NERDTreeToggle<CR>
+" nmap \e :NERDTreeToggle<CR>
+nmap \e :FloatermNew vifm<cr>
 
 " Open undotree
 nnoremap \u :UndotreeToggle<CR>
@@ -24,7 +25,7 @@ nmap <BS> :b#<CR>
 "map <c-d> <esc>:Files<cr>
 
 " open files via clap
-map <c-d> <esc>:Clap files<cr>
+map <c-d> <esc>:FloatermNew fzf<cr>
 
 " open buffers via clap
 map <c-b> <esc>:Clap buffers<cr>

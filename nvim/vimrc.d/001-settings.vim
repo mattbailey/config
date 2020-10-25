@@ -28,13 +28,13 @@ set list
 set listchars=tab:▸\ ,trail:⊗,nbsp:▹,eol:¬
 set mouse=a
 set nocompatible
-set cursorcolumn      " paint cursor column
+set nocursorcolumn      " paint cursor column
 set cursorline        " paint cursor line
 set noerrorbells
 set nostartofline
 set noswapfile
 set number
-set relativenumber
+set norelativenumber
 set ruler
 " always show 8 lines below cursor
 set scrolloff=8

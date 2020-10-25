@@ -48,6 +48,9 @@ end
 if type -q bat
   alias cat bat
   set -x PAGER bat
+  set -x FZF_CTRL_T_OPTS "--color=dark \
+  --preview='bat --style=changes --color=always --paging=never --italic-text=always --theme=TwoDark --line-range=:100 {}' \
+  --preview-window=right:50%"
 else
   echo missing: bat
 end
@@ -101,5 +104,5 @@ if test -f $HOME/.private/fish/secrets.fish
   source $HOME/.private/fish/secrets.fish
 end
 
-starship init fish | source
+# starship init fish | source
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
