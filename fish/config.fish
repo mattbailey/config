@@ -7,6 +7,7 @@ set -x PATH /usr/local/opt/make/libexec/gnubin $PATH
 set -x PATH ./.bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH (ruby -r rubygems -e 'puts Gem.user_dir')/bin $PATH
+set -x PATH /home/linuxbrew/.linuxbrew/bin $PATH
 
 # set -xting EDITOR
 if type -q vi
@@ -106,3 +107,4 @@ end
 
 # starship init fish | source
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
+set -g fish_user_paths "/home/linuxbrew/.linuxbrew/opt/curl/bin" $fish_user_paths
