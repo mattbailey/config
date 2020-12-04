@@ -48,7 +48,6 @@ end
 # https://github.com/eth-p/bat-extras
 if type -q bat
   alias cat bat
-  set -x PAGER bat
   set -x FZF_CTRL_T_OPTS "--color=dark \
   --preview='bat --style=changes --color=always --paging=never --italic-text=always --theme=TwoDark --line-range=:100 {}' \
   --preview-window=right:50%"
@@ -108,3 +107,25 @@ end
 # starship init fish | source
 set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
 set -g fish_user_paths "/home/linuxbrew/.linuxbrew/opt/curl/bin" $fish_user_paths
+
+# spacefish shell stuff https://github.com/matchai/spacefish/blob/master/docs/Options.md
+#   all this language detection is very slow
+set SPACEFISH_PACKAGE_SHOW false
+set SPACEFISH_NODE_SHOW false
+set SPACEFISH_JULIA_SHOW false
+set SPACEFISH_DOCKER_SHOW false
+set SPACEFISH_RUBY_SHOW false
+set SPACEFISH_HASKELL_SHOW false
+set SPACEFISH_AWS_SHOW false
+set SPACEFISH_VENV_SHOW false
+set SPACEFISH_CONDA_SHOW false
+set SPACEFISH_ELIXIR_SHOW false
+set SPACEFISH_PYENV_SHOW false
+set SPACEFISH_GOLANG_SHOW false
+set SPACEFISH_PHP_SHOW false
+set SPACEFISH_RUST_SHOW false
+set SPACEFISH_DOTNET_SHOW false
+set SPACEFISH_KUBECONTEXT_SHOW false
+# Other options
+set SPACEFISH_EXIT_CODE_SHOW true
+

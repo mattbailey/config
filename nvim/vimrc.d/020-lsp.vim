@@ -7,7 +7,7 @@ local on_attach_vim = function()
 	require'diagnostic'.on_attach()
 	require'on_attach_status'
 end
-require'nvim_lsp'.gopls.setup{
+require'lspconfig'.gopls.setup{
 	on_attach=on_attach_vim;
 	settings = {
 		gopls = {
@@ -22,17 +22,17 @@ require'nvim_lsp'.gopls.setup{
 		}
 	};
 };
-require'nvim_lsp'.bashls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.clangd.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.cssls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.dockerls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.jsonls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.pyls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.rust_analyzer.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.sumneko_lua.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.terraformls.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.tsserver.setup{on_attach=on_attach_vim};
-require'nvim_lsp'.yamlls.setup{
+require'lspconfig'.bashls.setup{on_attach=on_attach_vim};
+require'lspconfig'.clangd.setup{on_attach=on_attach_vim};
+require'lspconfig'.cssls.setup{on_attach=on_attach_vim};
+require'lspconfig'.dockerls.setup{on_attach=on_attach_vim};
+require'lspconfig'.jsonls.setup{on_attach=on_attach_vim};
+require'lspconfig'.pyls.setup{on_attach=on_attach_vim};
+require'lspconfig'.rust_analyzer.setup{on_attach=on_attach_vim};
+require'lspconfig'.sumneko_lua.setup{on_attach=on_attach_vim};
+require'lspconfig'.terraformls.setup{on_attach=on_attach_vim};
+require'lspconfig'.tsserver.setup{on_attach=on_attach_vim};
+require'lspconfig'.yamlls.setup{
 	on_attach=on_attach_vim;
 	settings={
 		yaml={
